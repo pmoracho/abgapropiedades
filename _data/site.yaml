@@ -28,7 +28,8 @@ contacto:
   direccion: ""
 
 colores:
-  primario: "#1a3a5c"
+  primario: "#1f5c3f"
+  primario_claro: "#55afb4"
   acento: "#c8a96e"
   fondo: "#f8f7f4"
   texto: "#1e1e1e"

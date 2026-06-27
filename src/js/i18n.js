@@ -68,6 +68,12 @@
       if (val) el.textContent = val;
     });
 
+    // Tagline del sitio (hero, footer) con data-tagline-es / data-tagline-en
+    document.querySelectorAll("[data-tagline-es]").forEach((el) => {
+      const val = lang === "en" ? el.dataset.taglineEn : el.dataset.taglineEs;
+      if (val) el.textContent = val;
+    });
+
     // Descripciones con data-desc-es / data-desc-en
     document.querySelectorAll("[data-desc-es]").forEach((el) => {
       const val = lang === "en" ? el.dataset.descEn : el.dataset.descEs;
