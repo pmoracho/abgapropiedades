@@ -1,0 +1,122 @@
+id: guillermo-rawson-mariano-pelliza-olivos-vicente-lopez
+titulo: Guillermo Rawson & Mariano Pelliza, Olivos
+titulo_en: ''
+operacion: venta
+tipo: departamento
+destacada: false
+estado: activa
+precio: 2680000
+moneda: USD
+barrio: Olivos
+partido: Vicente López
+direccion: Guillermo Rawson & Mariano Pelliza, Olivos, Vicente López
+ambientes: 10
+dormitorios: 7
+banos: 6
+lat: -34.5089
+lng: -58.4965
+superficie_cubierta: 740
+superficie_total: 1516
+descripcion: 'MAGNÍFICA CASA rodeada de Parques Arboles y vegetación exótica. 1516m.
+  CALIDEZ y CONFORT en 3 Plantas construcción MID CENTURY MODERN STYLE en 740M2 PLANTA
+  BAJA: AMPLIO LIVING con CHIMENEA y COMEDOR y ESCRITORIO, TOILETTE SUITE AMPLIA con
+  VESTIDOR, baño compartimentado a grandes ventanales Vista a jardines. DOS DORMITORIOS
+  con Baño compartido. LIVING INTIMO con Vistas todo lleno de luz y sol. PLANTA ALTA:
+  DOS DORMITORIOS, Baño Compartido y ESCRITORIO TERRAZA AMPLIA rodeada de árboles
+  SUBSUELO: PLAYROOM Amplio con Chimenea SERVICIO 2 Dormitorios y baño completo CALEFACCIÓN
+  y AGUA CALIENTE Central. GARAGE para 4 coches y espacio externo para 4 coches, TALLER.
+  QUINCHO para 16 personas con Parrilla y Horno de barro. y PILETA CLIMATIZADA . VESTUARIOS
+  con Ducha y sanitarios. JARDINES con Arboles de variadas especies que abrazan la
+  casa, le dan una calidez y encanto magnético, con trinos de pájaros, se disfruta
+  la quietud, la luz, el SOL ESTANQUE: Variedad de Peces y colores. INSTALACIONES:
+  SEGURIDAD Perimetral. PORTONES Automáticos. CÁMARAS de Seguridad. TELEFONÍA Interna
+  . RED de Datos. ILUMINACIÓN Led Automatizada. BAJO costo de mantenimiento. ZONA
+  RESIDENCIAL, de calles arboladas y Seguridad. Cerca del Colegio San Andres y Torguet.'
+descripcion_en: ''
+comodidades: []
+comodidades_en: []
+secciones:
+  CARACTERÍSTICAS INMUEBLE:
+    detalles:
+      PRECIO: USD 2.680.000
+      SUPERFICIE CUBIERTA: 740m2
+      SUPERFICIE TOTAL: 1516 m2
+      ANTIGÜEDAD: 48 años
+      ORIENTACIÓN: E
+      LUMINOSIDAD: Muy luminosa
+      AMBIENTES: '10'
+      DORMITORIOS: '7'
+      DORMITORIO EN SUITE: '1'
+      BAÑOS: '6'
+      TOILETTE: '1'
+      DEPENDENCIA DE SERVICIO: 2 dorm y baño completo
+    items:
+    - VESTIDOR
+    - HALL
+    - AMPLIO LIVING
+    - COMEDOR
+    - ESCRITORIO
+    - LIVING INTIMO
+    - PLAYROOM
+    - ALTILLO
+    - BALCÓN
+    - BAULERA
+    - PILETA CLIMATIZADA / VESTUARIOS
+    - TERRAZA AMPLIA
+    - JARDINES / ESTANQUE
+    - QUINCHO CON HORNO DE BARRO
+    - GARAGE PARA 4 COCHES
+    - FRENTE DEL TERRENO 40M
+    - LARGO DEL TERRENO 50M
+  INSTALACIONES:
+    items:
+    - CALEFACCIÓN Y AGUA CALIENTE CENTRAL
+    - AIRE ACONDICIONADO
+    - SEGURIDAD PERIMETRAL
+    - PORTONES AUTOMÁTICOS
+    - CÁMARAS DE SEGURIDAD
+fotos:
+- olivos_.jpg
+- olivos_10.jpg
+- olivos_11.jpg
+- olivos_12.jpg
+- olivos_13.jpg
+- olivos_14.jpg
+- olivos_15.jpg
+- olivos_16.jpg
+- olivos_17.jpg
+- olivos_18.jpg
+- olivos_19.jpg
+- olivos_2.jpg
+- olivos_20.jpg
+- olivos_21.jpg
+- olivos_22.jpg
+- olivos_23.jpg
+- olivos_24.jpg
+- olivos_25.jpg
+- olivos_26.jpg
+- olivos_27.jpg
+- olivos_28.jpg
+- olivos_29.jpg
+- olivos_3.jpg
+- olivos_30.jpg
+- olivos_31.jpg
+- olivos_32.jpg
+- olivos_33.jpg
+- olivos_34.jpg
+- olivos_35.jpg
+- olivos_36.jpg
+- olivos_37.jpg
+- olivos_38.jpg
+- olivos_39.jpg
+- olivos_4.jpg
+- olivos_40.jpg
+- olivos_41.jpg
+- olivos_42.jpg
+- olivos_43.jpg
+- olivos_5.jpg
+- olivos_6.jpg
+- olivos_7.jpg
+- olivos_8.jpg
+- olivos_9.jpg
+foto_portada: olivos_.jpg
