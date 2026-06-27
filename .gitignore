@@ -4,9 +4,3 @@ _site/
 _data/*.json
 .venv/
 
-# 1. Ignorar todo el contenido de la carpeta 'propiedades'
-propiedades/*
-# 2. Permitir la subcarpeta específica que quieres conservar
-!propiedades/casa-olivos-001/
-# 3. Permitir un archivo específico que esté dentro de 'propiedades'
-!propiedades/.eleventy.js
