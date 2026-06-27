@@ -1,0 +1,81 @@
+---
+layout: base.njk
+title: Propiedades
+---
+
+<section class="hero">
+  <div class="container">
+    <h1 class="hero-titulo"
+      data-tagline-es="{{ site.tagline.es }}"
+      data-tagline-en="{{ site.tagline.en }}">{{ site.tagline.es }}</h1>
+    <p class="hero-sub"
+      data-desc-es="{{ site.descripcion.es }}"
+      data-desc-en="{{ site.descripcion.en }}">{{ site.descripcion.es }}</p>
+  </div>
+</section>
+
+<section class="busqueda-section" id="busqueda">
+  <div class="container">
+    <div id="search" class="pagefind-search"></div>
+    <div class="filtros" id="filtros">
+      <div class="filtro-grupo">
+        <label for="f-operacion" data-i18n="filtro_operacion">Operación</label>
+        <select id="f-operacion">
+          <option value="" data-i18n="filtro_todas">Todas</option>
+          <option value="venta" data-i18n="filtro_venta">Venta</option>
+          <option value="alquiler" data-i18n="filtro_alquiler">Alquiler</option>
+          <option value="alquiler-temporario" data-i18n="filtro_temporario">Temporario</option>
+        </select>
+      </div>
+      <div class="filtro-grupo">
+        <label for="f-tipo" data-i18n="filtro_tipo">Tipo</label>
+        <select id="f-tipo">
+          <option value="" data-i18n="filtro_todos">Todos</option>
+          <option value="casa" data-i18n="tipo_casa">Casa</option>
+          <option value="departamento" data-i18n="tipo_departamento">Departamento</option>
+          <option value="ph">PH</option>
+          <option value="local" data-i18n="tipo_local">Local</option>
+          <option value="terreno" data-i18n="tipo_terreno">Terreno</option>
+          <option value="oficina" data-i18n="tipo_oficina">Oficina</option>
+        </select>
+      </div>
+      <div class="filtro-grupo">
+        <label for="f-ambientes" data-i18n="filtro_ambientes">Ambientes mínimos</label>
+        <select id="f-ambientes">
+          <option value="" data-i18n="filtro_cualquiera">Cualquiera</option>
+          <option value="1">1+</option>
+          <option value="2">2+</option>
+          <option value="3">3+</option>
+          <option value="4">4+</option>
+        </select>
+      </div>
+      <button class="filtro-limpiar" onclick="limpiarFiltros()" data-i18n="filtro_limpiar">Limpiar filtros</button>
+    </div>
+    <p class="resultados-contador" id="contador"></p>
+  </div>
+</section>
+
+<section class="propiedades-section">
+  <div class="container">
+    {% set destacadas = propiedades | selectattr("destacada") | selectattr("estado", "equalto", "activa") %}
+    {% if destacadas | length %}
+    <div class="seccion-titulo-wrap">
+      <h2 class="seccion-titulo" data-i18n="sec_destacadas">Destacadas</h2>
+    </div>
+    <div class="prop-grid prop-grid--destacadas" id="grid-destacadas">
+      {% for prop in destacadas %}{% include "prop-card.njk" %}{% endfor %}
+    </div>
+    {% endif %}
+
+    {% set activas = propiedades | selectattr("estado", "equalto", "activa") %}
+    <div class="seccion-titulo-wrap">
+      <h2 class="seccion-titulo" data-i18n="sec_todas">Todas las propiedades</h2>
+    </div>
+    <div class="prop-grid" id="grid-propiedades">
+      {% for prop in activas %}{% include "prop-card.njk" %}{% endfor %}
+    </div>
+    <p class="grid-vacio hidden" id="grid-vacio" data-i18n="sin_resultados">
+      No hay propiedades que coincidan con los filtros.
+    </p>
+  </div>
+</section>

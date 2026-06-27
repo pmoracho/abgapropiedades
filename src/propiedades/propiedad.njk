@@ -1,0 +1,330 @@
+---
+pagination:
+  data: propiedades
+  size: 1
+  alias: prop
+permalink: "propiedades/{{ prop.id }}/"
+layout: base.njk
+eleventyComputed:
+  title: "{{ prop.titulo }}"
+  description: "{{ prop.tipo }} en {{ prop.operacion }} en {{ prop.barrio }}. {{ prop.ambientes }} ambientes, {{ prop.superficie_cubierta }} m²."
+  og_image: "{% if prop.fotos %}/propiedades/{{ prop.id }}/{{ prop.foto_portada or prop.fotos[0] }}{% endif %}"
+---
+
+<div class="prop-ficha" data-pagefind-body>
+
+  <div class="container">
+    <nav class="breadcrumb">
+      <a href="/" data-i18n="bread_propiedades">Propiedades</a>
+      <span>›</span>
+      <span>{{ prop.barrio }}</span>
+      <span>›</span>
+      <span class="prop-titulo-breadcrumb"
+        data-titulo-es="{{ prop.titulo }}"
+        data-titulo-en="{{ prop.titulo_en or prop.titulo }}">{{ prop.titulo }}</span>
+    </nav>
+  </div>
+
+  <!-- Galería -->
+  <div class="galeria-wrap">
+    {% if prop.fotos and prop.fotos.length %}
+    <div class="galeria" id="galeria">
+      {% for foto in prop.fotos %}
+      <a href="/propiedades/{{ prop.id }}/{{ foto }}"
+         class="galeria-item {% if loop.first %}galeria-item--principal{% endif %}"
+         data-galeria>
+        <img
+          src="/propiedades/{{ prop.id }}/{{ foto }}"
+          alt="{{ prop.titulo }} — foto {{ loop.index }}"
+          {% if loop.first %}loading="eager"{% else %}loading="lazy"{% endif %}
+          width="800" height="500">
+      </a>
+      {% endfor %}
+    </div>
+    {% if prop.fotos.length > 1 %}
+    <button class="galeria-ver-todas" onclick="abrirGaleria(0)">
+      <span data-i18n="ficha_ver_fotos">Ver todas las fotos</span> ({{ prop.fotos.length }})
+    </button>
+    {% endif %}
+    {% endif %}
+  </div>
+
+  <div class="container">
+    <div class="ficha-layout">
+
+      <!-- Columna principal -->
+      <div class="ficha-main">
+        <div class="ficha-cabecera">
+          <div class="ficha-badges">
+            <span class="badge badge--operacion badge--{{ prop.operacion }}"
+              data-i18n="badge_{{ prop.operacion | replace('-','_') }}">{{ prop.operacion }}</span>
+            <span class="badge badge--tipo"
+              data-i18n="tipo_{{ prop.tipo }}">{{ prop.tipo }}</span>
+            {% if prop.estado == 'reservada' %}<span class="badge badge--reservada" data-i18n="badge_reservada">Reservada</span>{% endif %}
+            {% if prop.antiguedad === 0 %}<span class="badge badge--nuevo" data-i18n="badge_nuevo">A estrenar</span>{% endif %}
+          </div>
+          <h1 class="ficha-titulo"
+            data-titulo-es="{{ prop.titulo }}"
+            data-titulo-en="{{ prop.titulo_en or prop.titulo }}">{{ prop.titulo }}</h1>
+          <p class="ficha-ubicacion">📍 {{ prop.direccion }}</p>
+          <div class="ficha-precio">
+            <span class="precio-valor precio-valor--grande">{{ prop.precio | formatPrice(prop.moneda) }}</span>
+            {% if prop.operacion == 'alquiler' %}
+              <span class="precio-periodo" data-i18n="ficha_mes">/mes</span>
+            {% endif %}
+          </div>
+        </div>
+
+        <!-- Features grid -->
+        <div class="ficha-features-grid">
+          {% if prop.ambientes %}
+          <div class="feature-item">
+            <span class="feature-icono">🏠</span>
+            <span class="feature-valor">{{ prop.ambientes }}</span>
+            <span class="feature-label" data-i18n="feat_ambientes">Ambientes</span>
+          </div>{% endif %}
+          {% if prop.dormitorios %}
+          <div class="feature-item">
+            <span class="feature-icono">🛏</span>
+            <span class="feature-valor">{{ prop.dormitorios }}</span>
+            <span class="feature-label" data-i18n="feat_dormitorios">Dormitorios</span>
+          </div>{% endif %}
+          {% if prop.banos %}
+          <div class="feature-item">
+            <span class="feature-icono">🚿</span>
+            <span class="feature-valor">{{ prop.banos }}</span>
+            <span class="feature-label" data-i18n="feat_banos">Baños</span>
+          </div>{% endif %}
+          {% if prop.superficie_cubierta %}
+          <div class="feature-item">
+            <span class="feature-icono">📐</span>
+            <span class="feature-valor">{{ prop.superficie_cubierta }}</span>
+            <span class="feature-label" data-i18n="feat_sup_cubierta">m² cubiertos</span>
+          </div>{% endif %}
+          {% if prop.superficie_total and prop.superficie_total != prop.superficie_cubierta %}
+          <div class="feature-item">
+            <span class="feature-icono">🌿</span>
+            <span class="feature-valor">{{ prop.superficie_total }}</span>
+            <span class="feature-label" data-i18n="feat_sup_total">m² totales</span>
+          </div>{% endif %}
+          {% if prop.cochera %}
+          <div class="feature-item">
+            <span class="feature-icono">🚗</span>
+            <span class="feature-valor" data-i18n="feat_si">Sí</span>
+            <span class="feature-label" data-i18n="feat_cochera">Cochera</span>
+          </div>{% endif %}
+          {% if prop.piso %}
+          <div class="feature-item">
+            <span class="feature-icono">🏢</span>
+            <span class="feature-valor">{{ prop.piso }}°</span>
+            <span class="feature-label" data-i18n="feat_piso">Piso</span>
+          </div>{% endif %}
+          {% if prop.antiguedad !== undefined and prop.antiguedad !== null %}
+          <div class="feature-item">
+            <span class="feature-icono">📅</span>
+            <span class="feature-valor">
+              {% if prop.antiguedad === 0 %}
+                <span data-i18n="feat_nuevo">Nuevo</span>
+              {% else %}
+                {{ prop.antiguedad }} <span data-i18n="feat_anios">años</span>
+              {% endif %}
+            </span>
+            <span class="feature-label" data-i18n="feat_antiguedad">Antigüedad</span>
+          </div>{% endif %}
+        </div>
+
+        <!-- Descripción -->
+        <div class="ficha-descripcion">
+          <h2 data-i18n="ficha_descripcion">Descripción</h2>
+          <p class="descripcion-texto"
+            data-desc-es="{{ prop.descripcion }}"
+            data-desc-en="{{ prop.descripcion_en or prop.descripcion }}">{{ prop.descripcion }}</p>
+        </div>
+
+        <!-- Comodidades -->
+        {% if prop.comodidades and prop.comodidades.length %}
+        <div class="ficha-comodidades">
+          <h2 data-i18n="ficha_comodidades">Comodidades</h2>
+          <ul class="comodidades-lista" id="comodidades-lista"
+            data-comodidades-es="{{ prop.comodidades | dump }}"
+            data-comodidades-en="{{ prop.comodidades_en | dump }}">
+            {% for item in prop.comodidades %}
+            <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+
+        <!-- Secciones de características (extraídas automáticamente del scraper,
+             o agregadas a mano: CARACTERÍSTICAS INMUEBLE, SERVICIOS GENERALES, etc.) -->
+        {% if prop.secciones %}
+        {% for titulo, contenido in prop.secciones %}
+        <div class="ficha-seccion">
+          <h2>{{ titulo }}</h2>
+
+          {% if contenido.detalles %}
+          <dl class="seccion-detalles">
+            {% for clave, valor in contenido.detalles %}
+            <div class="detalle-item">
+              <dt>{{ clave | title }}</dt>
+              <dd>{{ valor }}</dd>
+            </div>
+            {% endfor %}
+          </dl>
+          {% endif %}
+
+          {% if contenido.items and contenido.items.length %}
+          <ul class="seccion-items">
+            {% for item in contenido.items %}
+            <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        <!-- Google Maps -->
+        {% if prop.lat and prop.lng %}
+        <div class="ficha-mapa">
+          <h2 data-i18n="ficha_mapa">Ubicación</h2>
+          <div class="mapa-wrap">
+            <iframe
+              title="Ubicación de {{ prop.titulo }}"
+              width="100%"
+              height="320"
+              frameborder="0"
+              style="border:0"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q={{ prop.lat }},{{ prop.lng }}&z=16&output=embed"
+              allowfullscreen>
+            </iframe>
+            <a class="mapa-abrir"
+              href="https://www.google.com/maps?q={{ prop.lat }},{{ prop.lng }}"
+              target="_blank" rel="noopener">
+              Abrir en Google Maps ↗
+            </a>
+          </div>
+        </div>
+        {% elif prop._maps_url_pendiente %}
+        <div class="ficha-mapa">
+          <h2 data-i18n="ficha_mapa">Ubicación</h2>
+          <div class="mapa-pendiente">
+            <a href="{{ prop._maps_url_pendiente }}" target="_blank" rel="noopener" class="mapa-abrir-pendiente">
+              📍 Ver ubicación en Google Maps ↗
+            </a>
+          </div>
+        </div>
+        {% endif %}
+
+      </div><!-- /ficha-main -->
+
+      <!-- Aside contacto -->
+      <aside class="ficha-aside">
+        <div class="contacto-card">
+          <h3 class="contacto-card-titulo" data-i18n="contacto_titulo">¿Te interesa esta propiedad?</h3>
+
+          <a href="https://wa.me/{{ site.contacto.whatsapp }}?text=Hola!%20Vi%20la%20propiedad%20%22{{ prop.titulo | urlencode }}%22%20(ID:%20{{ prop.id }})%20y%20me%20gustaría%20más%20info."
+             class="btn btn--whatsapp" target="_blank" rel="noopener" data-i18n="nav_whatsapp">
+            WhatsApp
+          </a>
+
+          <a href="tel:{{ site.contacto.telefono }}" class="btn btn--llamar" data-i18n="contacto_llamar">
+            Llamar
+          </a>
+
+          <div class="contacto-form-toggle">
+            <button class="btn btn--outline" onclick="toggleForm()" data-i18n="contacto_email_btn">
+              Enviar consulta por email
+            </button>
+          </div>
+
+          <form id="form-consulta" class="form-consulta hidden"
+            action="https://formspree.io/f/TU_FORM_ID" method="POST">
+            <input type="hidden" name="propiedad_id" value="{{ prop.id }}">
+            <input type="hidden" name="propiedad_titulo" value="{{ prop.titulo }}">
+            <div class="campo">
+              <label for="nombre" data-i18n="contacto_nombre">Nombre</label>
+              <input type="text" id="nombre" name="nombre" required data-i18n-placeholder="contacto_placeholder_nombre" placeholder="Tu nombre">
+            </div>
+            <div class="campo">
+              <label for="email" data-i18n="contacto_email">Email</label>
+              <input type="email" id="email" name="email" required data-i18n-placeholder="contacto_placeholder_email" placeholder="tucorreo@email.com">
+            </div>
+            <div class="campo">
+              <label for="tel" data-i18n="contacto_telefono">Teléfono (opcional)</label>
+              <input type="tel" id="tel" name="telefono" data-i18n-placeholder="contacto_placeholder_tel" placeholder="+54 11 ...">
+            </div>
+            <div class="campo">
+              <label for="msg" data-i18n="contacto_mensaje">Mensaje</label>
+              <textarea id="msg" name="mensaje" rows="4" data-i18n-placeholder="contacto_placeholder_msg"
+                placeholder="Hola, me interesa esta propiedad..."></textarea>
+            </div>
+            <button type="submit" class="btn btn--primario" data-i18n="contacto_enviar">Enviar consulta</button>
+            <p class="form-nota" data-i18n="contacto_nota">Te respondemos en menos de 24 horas.</p>
+          </form>
+
+          <div class="contacto-info">
+            <p>{{ site.contacto.email }}</p>
+            <p>{{ site.contacto.telefono }}</p>
+          </div>
+        </div>
+        <div class="ficha-id">
+          <small><span data-i18n="ficha_ref">Ref.</span> {{ prop.id }}</small>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox hidden" role="dialog" aria-modal="true">
+  <button class="lightbox-cerrar" onclick="cerrarLightbox()" aria-label="Cerrar">✕</button>
+  <button class="lightbox-prev" onclick="navLightbox(-1)" aria-label="Anterior">‹</button>
+  <button class="lightbox-next" onclick="navLightbox(1)" aria-label="Siguiente">›</button>
+  <div class="lightbox-contenido">
+    <img id="lightbox-img" src="" alt="">
+    <p id="lightbox-contador" class="lightbox-contador"></p>
+  </div>
+</div>
+
+<script>
+const fotos = {{ prop.fotos | dump | safe }};
+const basePath = "/propiedades/{{ prop.id }}/";
+let indiceActual = 0;
+
+function abrirGaleria(i) {
+  indiceActual = i;
+  document.getElementById('lightbox').classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+  actualizarLightbox();
+}
+function cerrarLightbox() {
+  document.getElementById('lightbox').classList.add('hidden');
+  document.body.style.overflow = '';
+}
+function navLightbox(dir) {
+  indiceActual = (indiceActual + dir + fotos.length) % fotos.length;
+  actualizarLightbox();
+}
+function actualizarLightbox() {
+  document.getElementById('lightbox-img').src = basePath + fotos[indiceActual];
+  document.getElementById('lightbox-contador').textContent = `${indiceActual + 1} / ${fotos.length}`;
+}
+function toggleForm() {
+  document.getElementById('form-consulta').classList.toggle('hidden');
+}
+document.querySelectorAll('[data-galeria]').forEach((el, i) => {
+  el.addEventListener('click', e => { e.preventDefault(); abrirGaleria(i); });
+});
+document.getElementById('lightbox').addEventListener('click', e => {
+  if (e.target === e.currentTarget) cerrarLightbox();
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') cerrarLightbox();
+  if (e.key === 'ArrowLeft') navLightbox(-1);
+  if (e.key === 'ArrowRight') navLightbox(1);
+});
+</script>

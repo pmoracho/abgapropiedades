@@ -1,0 +1,39 @@
+nombre: "ABGA Propiedades"
+
+# Tagline bilingüe — se muestra en el hero y el footer
+tagline:
+  es: "Tenemos un lugar para vos."
+  en: "We have a place for you."
+
+descripcion:
+  es: "ABGA Propiedades funciona en plaza desde 1984, ubicada en la zona más exclusiva de CABA, es considerada BOUTIQUE INMOBILIARIA con cálida atención personal, y jerarquizada, con asesoramiento comercial y legal. Tasación y valuación profesional a cargo de BERTA GARZÓN, Martillera y Corredora Inmobiliaria matrícula Nro. 1497"
+  en: "ABGA Propiedades has been operating since 1984, located in the most exclusive area of Buenos Aires. It is recognized as a BOUTIQUE REAL ESTATE AGENCY offering warm, personalized, high-level service with commercial and legal advisory. Professional appraisals by BERTA GARZÓN, licensed Real Estate Broker, registration No. 1497."
+
+# Logo e ícono de página
+# Rutas relativas a la raíz del sitio (_site/)
+# Dejar en null para usar el nombre de texto como logo
+marca:
+  logo: /img/logo.png         # ej: /img/logo.svg  — reemplazar cuando tengas el archivo
+  logo_ancho: 160             # px — ancho máximo del logo en el header
+  favicon: /img/favicon.svg   # ej: /img/favicon.ico o /img/favicon.png
+  favicon_svg: null           # ej: /img/favicon.svg — navegadores modernos prefieren SVG
+  apple_touch_icon: null      # ej: /img/apple-touch-icon.png (180x180px)
+  og_image: null              # ej: /img/og-default.jpg (1200x630px)
+
+contacto:
+  email: "abga.prop@gmail.com"
+  telefono: "+549 (11) 4811-4881"
+  whatsapp: "+549 (11) 6135-2052"
+  instagram: "@propiedadesmarlowe"
+  direccion: ""
+
+colores:
+  primario: "#1a3a5c"
+  acento: "#c8a96e"
+  fondo: "#f8f7f4"
+  texto: "#1e1e1e"
+  blanco: "#ffffff"
+  link: "#8f92fd"
+
+seo:
+  url_base: "https://abgapropiedades.com"

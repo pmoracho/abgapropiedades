@@ -1,0 +1,96 @@
+---
+layout: base.njk
+title: Contacto
+description: Contactate con nosotros para consultas sobre propiedades.
+---
+
+<section class="page-hero">
+  <div class="container">
+    <h1 data-i18n="pag_contacto_titulo">Contacto</h1>
+    <p data-i18n="pag_contacto_sub">Estamos para ayudarte a encontrar tu próximo hogar.</p>
+  </div>
+</section>
+
+<section class="contacto-section">
+  <div class="container contacto-layout">
+
+    <div class="contacto-info-bloque">
+      <h2 data-i18n="pag_contacto_como">Cómo encontrarnos</h2>
+      <ul class="info-lista">
+        <li>
+          <strong data-i18n="pag_contacto_direccion">Dirección</strong>
+          <span>{{ site.contacto.direccion }}</span>
+        </li>
+        <li>
+          <strong data-i18n="contacto_telefono_label">Teléfono</strong>
+          <span><a href="tel:{{ site.contacto.telefono }}">{{ site.contacto.telefono }}</a></span>
+        </li>
+        <li>
+          <strong data-i18n="contacto_email">Email</strong>
+          <span><a href="mailto:{{ site.contacto.email }}">{{ site.contacto.email }}</a></span>
+        </li>
+        <li>
+          <strong>Instagram</strong>
+          <span><a href="https://instagram.com/{{ site.contacto.instagram | replace('@','') }}" target="_blank" rel="noopener">{{ site.contacto.instagram }}</a></span>
+        </li>
+      </ul>
+
+      <a href="https://wa.me/{{ site.contacto.whatsapp }}"
+         class="btn btn--whatsapp"
+         target="_blank" rel="noopener"
+         data-i18n="contacto_whatsapp_btn">
+        Escribinos por WhatsApp
+      </a>
+    </div>
+
+    <div class="contacto-form-bloque">
+      <h2 data-i18n="pag_contacto_form">Envianos un mensaje</h2>
+      <form
+        id="form-contacto"
+        action="https://formspree.io/f/TU_FORM_ID"
+        method="POST"
+        class="form-contacto">
+
+        <div class="campo">
+          <label for="nombre" data-i18n="contacto_nombre_completo">Nombre completo *</label>
+          <input type="text" id="nombre" name="nombre" required
+            data-i18n-placeholder="contacto_placeholder_nombre" placeholder="Tu nombre">
+        </div>
+
+        <div class="campo">
+          <label for="email" data-i18n="contacto_email_required">Email *</label>
+          <input type="email" id="email" name="email" required
+            data-i18n-placeholder="contacto_placeholder_email" placeholder="tucorreo@email.com">
+        </div>
+
+        <div class="campo">
+          <label for="telefono" data-i18n="contacto_telefono">Teléfono</label>
+          <input type="tel" id="telefono" name="telefono"
+            data-i18n-placeholder="contacto_placeholder_tel" placeholder="+54 11 ...">
+        </div>
+
+        <div class="campo">
+          <label for="interes" data-i18n="pag_contacto_interes">¿Qué te interesa?</label>
+          <select id="interes" name="interes">
+            <option value="" data-i18n="pag_contacto_interes_placeholder">Seleccioná una opción</option>
+            <option value="comprar" data-i18n="pag_contacto_interes_opt1">Comprar una propiedad</option>
+            <option value="alquilar" data-i18n="pag_contacto_interes_opt2">Alquilar una propiedad</option>
+            <option value="vender" data-i18n="pag_contacto_interes_opt3">Vender/alquilar mi propiedad</option>
+            <option value="consulta" data-i18n="pag_contacto_interes_opt4">Consulta general</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="mensaje" data-i18n="pag_contacto_msg_required">Mensaje *</label>
+          <textarea id="mensaje" name="mensaje" rows="5" required
+            data-i18n-placeholder="pag_contacto_placeholder_msg"
+            placeholder="Contanos qué estás buscando..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn--primario" data-i18n="pag_contacto_send">Enviar mensaje</button>
+        <p class="form-nota" data-i18n="pag_contacto_nota">Te respondemos en menos de 24 horas hábiles.</p>
+      </form>
+    </div>
+
+  </div>
+</section>

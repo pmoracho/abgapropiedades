@@ -1,0 +1,26 @@
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-marca">
+      {% if site.marca.logo %}
+        <img src="{{ site.marca.logo }}" alt="{{ site.nombre }}" class="logo-img logo-img--footer" width="120" loading="lazy">
+      {% else %}
+        <span class="logo-nombre">{{ site.nombre }}</span>
+      {% endif %}
+      <p class="footer-tagline"
+        data-tagline-es="{{ site.tagline.es }}"
+        data-tagline-en="{{ site.tagline.en }}">{{ site.tagline.es }}</p>
+    </div>
+    <div class="footer-contacto">
+      <p><a href="tel:{{ site.contacto.telefono }}">{{ site.contacto.telefono }}</a></p>
+      <p><a href="mailto:{{ site.contacto.email }}">{{ site.contacto.email }}</a></p>
+      <p>{{ site.contacto.direccion }}</p>
+    </div>
+    <div class="footer-links">
+      <a href="https://wa.me/{{ site.contacto.whatsapp }}" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://instagram.com/{{ site.contacto.instagram | replace('@','') }}" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+  <div class="footer-copy">
+    <p>&copy; 2025 {{ site.nombre }}. <span data-i18n="footer_derechos">Todos los derechos reservados.</span></p>
+  </div>
+</footer>

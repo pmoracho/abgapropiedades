@@ -1,0 +1,51 @@
+<article class="prop-card {% if prop.destacada %}prop-card--destacada{% endif %}"
+  data-operacion="{{ prop.operacion }}"
+  data-tipo="{{ prop.tipo }}"
+  data-precio="{{ prop.precio }}"
+  data-moneda="{{ prop.moneda }}"
+  data-ambientes="{{ prop.ambientes }}">
+
+  <a href="/propiedades/{{ prop.id }}/" class="prop-card-link">
+    <div class="prop-card-img">
+      {% if prop.fotos and prop.fotos.length %}
+        <img
+          src="/propiedades/{{ prop.id }}/{{ prop.foto_portada or prop.fotos[0] }}"
+          alt="{{ prop.titulo }}"
+          loading="lazy" width="400" height="280">
+      {% else %}
+        <div class="prop-card-img-placeholder">Sin foto</div>
+      {% endif %}
+      <div class="prop-card-badges">
+        <span class="badge badge--operacion badge--{{ prop.operacion }}"
+          data-i18n="badge_{{ prop.operacion | replace('-','_') }}">{{ prop.operacion }}</span>
+        <span class="badge badge--tipo"
+          data-i18n="tipo_{{ prop.tipo }}">{{ prop.tipo }}</span>
+        {% if prop.estado == 'reservada' %}
+          <span class="badge badge--reservada" data-i18n="badge_reservada">Reservada</span>
+        {% endif %}
+        {% if prop.antiguedad === 0 %}
+          <span class="badge badge--nuevo" data-i18n="badge_nuevo">A estrenar</span>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="prop-card-body">
+      <h2 class="prop-card-titulo"
+        data-titulo-es="{{ prop.titulo }}"
+        data-titulo-en="{{ prop.titulo_en or prop.titulo }}">{{ prop.titulo }}</h2>
+      <p class="prop-card-ubicacion">{{ prop.barrio }}, {{ prop.partido }}</p>
+
+      <div class="prop-card-features">
+        {% if prop.ambientes %}<span>🏠 {{ prop.ambientes }} <span data-i18n="feat_ambientes">amb.</span></span>{% endif %}
+        {% if prop.dormitorios %}<span>🛏 {{ prop.dormitorios }}</span>{% endif %}
+        {% if prop.banos %}<span>🚿 {{ prop.banos }}</span>{% endif %}
+        {% if prop.superficie_cubierta %}<span>📐 {{ prop.superficie_cubierta }} m²</span>{% endif %}
+        {% if prop.cochera %}<span>🚗 <span data-i18n="feat_cochera">Cochera</span></span>{% endif %}
+      </div>
+
+      <div class="prop-card-precio">
+        <span class="precio-valor">{{ prop.precio | formatPrice(prop.moneda) }}</span>
+      </div>
+    </div>
+  </a>
+</article>

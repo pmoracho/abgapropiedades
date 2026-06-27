@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es" id="html-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }} | {{ site.nombre }}</title>
+  <meta name="description" content="{{ description or site.descripcion.es }}">
+  <link rel="canonical" href="{{ site.seo.url_base }}{{ page.url }}">
+  <meta property="og:title" content="{{ title }} | {{ site.nombre }}">
+  <meta property="og:description" content="{{ description or site.descripcion.es }}">
+  <meta property="og:image" content="{{ site.seo.url_base }}{{ og_image or site.marca.og_image or '/img/og-default.jpg' }}">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+
+  <!-- Favicon e íconos -->
+  {% if site.marca.favicon_svg %}
+  <link rel="icon" type="image/svg+xml" href="{{ site.marca.favicon_svg }}">
+  {% endif %}
+  {% if site.marca.favicon %}
+  <link rel="icon" type="image/png" href="{{ site.marca.favicon }}">
+  {% elif not site.marca.favicon_svg %}
+  <link rel="icon" type="image/svg+xml" href="/img/favicon-default.svg">
+  {% endif %}
+  {% if site.marca.apple_touch_icon %}
+  <link rel="apple-touch-icon" href="{{ site.marca.apple_touch_icon }}">
+  {% endif %}
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/pagefind/pagefind-ui.css">
+
+  <style>
+    :root {
+      --color-primario: {{ site.colores.primario }};
+      --color-acento: {{ site.colores.acento }};
+      --color-fondo: {{ site.colores.fondo }};
+      --color-texto: {{ site.colores.texto }};
+      --color-blanco: {{ site.colores.blanco }};
+      --color-link: {{ site.colores.link}};
+      --logo-ancho: {{ site.marca.logo_ancho or 160 }}px;
+    }
+  </style>
+</head>
+<body>
+  {% include "header.njk" %}
+  <main>{{ content | safe }}</main>
+  {% include "footer.njk" %}
+
+  <!-- i18n data embebida para el JS cliente -->
+  <script id="i18n-data" type="application/json">{{ i18n | dump | safe }}</script>
+  <!-- site tagline bilingüe para el JS cliente -->
+  <script id="site-data" type="application/json">{{ site | dump | safe }}</script>
+
+  <script src="/js/i18n.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/pagefind/pagefind-ui.js" defer></script>
+</body>
+</html>

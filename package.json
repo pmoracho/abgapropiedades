@@ -1,0 +1,16 @@
+{
+  "name": "inmobiliaria-site",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "npx @11ty/eleventy",
+    "start": "npx @11ty/eleventy --serve --watch",
+    "build:search": "npx @11ty/eleventy && npx pagefind --site _site"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "js-yaml": "^4.2.0"
+  },
+  "devDependencies": {
+    "pagefind": "^1.1.0"
+  }
+}

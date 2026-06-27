@@ -1,0 +1,28 @@
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">
+      {% if site.marca.logo %}
+        <img src="{{ site.marca.logo }}"
+             alt="{{ site.nombre }}"
+             class="logo-img"
+             width="{{ site.marca.logo_ancho or 160 }}"
+             loading="eager">
+      {% else %}
+        <span class="logo-nombre">{{ site.nombre }}</span>
+      {% endif %}
+    </a>
+    <nav class="nav">
+      <a href="/" class="nav-link" data-i18n="nav_propiedades">Propiedades</a>
+      <a href="/contacto/" class="nav-link" data-i18n="nav_contacto">Contacto</a>
+      <a href="https://wa.me/{{ site.contacto.whatsapp }}" class="nav-cta" target="_blank" rel="noopener" data-i18n="nav_whatsapp">WhatsApp</a>
+      <div class="lang-switcher" id="lang-switcher">
+        <button class="lang-btn lang-btn--active" data-lang="es" onclick="setLang('es')">ES</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      </div>
+    </nav>
+    <button class="nav-toggle" aria-label="Menú" onclick="document.querySelector('.nav').classList.toggle('nav--open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
