@@ -28,9 +28,12 @@ module.exports = function (eleventyConfig) {
 
   // ---- Filtros ----
   eleventyConfig.addFilter("formatPrice", (price, currency) => {
+    if (price === undefined || price === null || price === "" || isNaN(Number(price))) {
+      return null; // el template decide qué mostrar (ej. "Consultar"/"Ask")
+    }
     const symbol = currency === "USD" ? "USD " : "$ ";
     return symbol + Number(price).toLocaleString("es-AR");
-  });
+  });  
 
   eleventyConfig.addFilter("operacionLabel", (op, lang) => {
     const labels = {

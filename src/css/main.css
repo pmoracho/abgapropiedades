@@ -311,7 +311,8 @@ h3 { font-size: 1.2rem; }
 .ficha-titulo { margin-bottom: 0.4rem; }
 .ficha-ubicacion { color: #666; margin-bottom: 0.75rem; }
 .ficha-precio { margin-top: 0.5rem; }
-
+.ficha-id { font-size: 0.75rem; color: #bbb; text-align: right; display: flex; flex-direction: column; gap: 0.15rem; }
+.ficha-sku { color: #bbb; }
 /* Resumen: tabla orgánica única (sustituye al grid de iconos + lista separada) */
 .resumen-tabla {
   display: grid;
@@ -371,7 +372,6 @@ h3 { font-size: 1.2rem; }
 .form-consulta { margin-top: 1rem; }
 .contacto-info { margin-top: 1rem; font-size: 0.82rem; color: #888; }
 .contacto-info p { margin-bottom: 0.2rem; }
-.ficha-id { font-size: 0.75rem; color: #bbb; text-align: right; }
 
 /* ---- FORMULARIOS ---- */
 .campo { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 0.9rem; }

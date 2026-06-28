@@ -44,8 +44,14 @@
       </div>
 
       <div class="prop-card-precio">
-        <span class="precio-valor">{{ prop.precio | formatPrice(prop.moneda) }}</span>
+        {% set precioFmt = prop.precio | formatPrice(prop.moneda) %}
+        {% if precioFmt %}
+          <span class="precio-valor">{{ precioFmt }}</span>
+        {% else %}
+          <span class="precio-valor precio-valor--consultar" data-i18n="precio_consultar">Consultar</span>
+        {% endif %}
       </div>
+
     </div>
   </a>
 </article>

@@ -71,9 +71,14 @@ eleventyComputed:
             data-titulo-en="{{ prop.titulo_en or prop.titulo }}">{{ prop.titulo }}</h1>
           <p class="ficha-ubicacion">📍 {{ prop.direccion }}</p>
           <div class="ficha-precio">
-            <span class="precio-valor precio-valor--grande">{{ prop.precio | formatPrice(prop.moneda) }}</span>
-            {% if prop.operacion == 'alquiler' %}
-              <span class="precio-periodo" data-i18n="ficha_mes">/mes</span>
+            {% set precioFmt = prop.precio | formatPrice(prop.moneda) %}
+            {% if precioFmt %}
+              <span class="precio-valor precio-valor--grande">{{ precioFmt }}</span>
+              {% if prop.operacion == 'alquiler' %}
+                <span class="precio-periodo" data-i18n="ficha_mes">/mes</span>
+              {% endif %}
+            {% else %}
+              <span class="precio-valor precio-valor--grande precio-valor--consultar" data-i18n="precio_consultar">Consultar</span>
             {% endif %}
           </div>
         </div>
@@ -295,7 +300,11 @@ eleventyComputed:
         </div>
         <div class="ficha-id">
           <small><span data-i18n="ficha_ref">Ref.</span> {{ prop.id }}</small>
+          {% if prop.sku %}
+          <small class="ficha-sku">SKU: {{ prop.sku }}</small>
+          {% endif %}
         </div>
+
       </aside>
 
     </div>

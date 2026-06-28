@@ -1,9 +1,8 @@
 id: penthouse-618m-5-ambientes-8-cocheras
 sku: AP-680
 titulo: Av. Alvear y Parera, Recoleta, Capital Federal
-titulo_en: ''
+titulo_en: 'Av. Alvear & Parera, Recoleta, Buenos Aires'
 operacion: venta
-precio: CONSULTAR PRECIO
 tipo: departamento
 destacada: false
 estado: activa
@@ -32,7 +31,18 @@ descripcion: 'PENTHOUSE UNICO, ALTÍSIMO VISTA PANORÁMICA A CIUDAD Y RIO, RECEP
   Jockey Club, Plaza de Cataluña, próximo a Paque Thays, Plaza Francia, Hoteles de
   Primera Línea, Shopping, Teatros, Cines, Bares y Restos. SKU: AP-680 Categoría:
   Venta'
-descripcion_en: ''
+descripcion_en: 'UNIQUE PENTHOUSE, EXTREMELY HIGH PANORAMIC VIEWS OF THE CITY AND
+  RIVER. 128m RECEPTION with Carrara marble floors extending out to a BALCONY/TERRACE
+  overlooking the river and city. SPACIOUS DINING ROOM, DOUBLE STUDY separated by
+  sliding doors with built-in cedar bookcases. 4 SUITES, the master with 2 WALK-IN
+  CLOSETS and 2 BATHROOMS finished in marble with views. 3 staff quarters, spacious
+  KITCHEN with island, large pantry/office, 2 storage rooms, 4 fixed DOUBLE PARKING
+  SPACES. The entire floor finished in top-quality materials, in impeccable condition,
+  with oak flooring. TOWER BUILDING with an Imperial-style entrance, coded elevators,
+  and SECURITY in all areas 24 hours a day. The privileged LOCATION on AV. ALVEAR,
+  the most distinguished and traditional avenue in Buenos Aires, steps from Plaza
+  Carlos Pellegrini, the Jockey Club and Plaza de Cataluña, and close to Thays Park,
+  Plaza Francia, top-tier hotels, shopping, theaters, cinemas, bars and restaurants.'
 comodidades: []
 comodidades_en: []
 secciones:
