@@ -70,7 +70,7 @@
 
     // Detalles extra del Resumen (clave/valor del scraper sin campo
     // estructurado propio): data-clave-es/en + data-valor-es/en
-    document.querySelectorAll(".resumen-detalles-extra .detalle-item").forEach((el) => {
+    document.querySelectorAll(".resumen-fila[data-clave-es]").forEach((el) => {
       const dt = el.querySelector("dt");
       const dd = el.querySelector("dd");
       const clave = lang === "en" ? el.dataset.claveEn : el.dataset.claveEs;

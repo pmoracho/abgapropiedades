@@ -312,20 +312,37 @@ h3 { font-size: 1.2rem; }
 .ficha-ubicacion { color: #666; margin-bottom: 0.75rem; }
 .ficha-precio { margin-top: 0.5rem; }
 
-/* Grid de features */
-.ficha-features-grid {
+/* Resumen: tabla orgánica única (sustituye al grid de iconos + lista separada) */
+.resumen-tabla {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 0;
   background: #f8f7f4;
   border-radius: 10px;
-  padding: 1.25rem;
-  margin-bottom: 1.75rem;
+  overflow: hidden;
+  border: 1px solid #ece9e3;
 }
-.feature-item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.2rem; }
-.feature-icono { font-size: 1.4rem; }
-.feature-valor { font-weight: 600; font-size: 1.1rem; line-height: 1; }
-.feature-label { font-size: 0.75rem; color: #888; }
+.resumen-fila {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 1.1rem;
+  border-bottom: 1px solid #ece9e3;
+  border-right: 1px solid #ece9e3;
+}
+/* Quitar el borde derecho a la última columna de cada fila visual y el
+   borde inferior a la última fila — aproximación simple con nth-last */
+.resumen-tabla .resumen-fila:nth-last-child(-n+1) { border-bottom: none; }
+
+.resumen-fila dt {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-size: 0.85rem; color: #666; font-weight: 500;
+  white-space: nowrap;
+}
+.resumen-icono { font-size: 1.05rem; line-height: 1; }
+.resumen-fila dd {
+  font-size: 0.92rem; color: #1e1e1e; font-weight: 600;
+  text-align: right; white-space: nowrap;
+}
 
 .ficha-descripcion, .ficha-comodidades { margin-bottom: 1.75rem; }
 .ficha-descripcion h2, .ficha-comodidades h2 { margin-bottom: 0.75rem; font-size: 1.15rem; }
@@ -522,10 +539,6 @@ h3 { font-size: 1.2rem; }
 .ficha-seccion { margin-bottom: 1.75rem; }
 .ficha-seccion h2 { margin-bottom: 0.9rem; font-size: 1.15rem; }
 
-/* Resumen: el grid de iconos no necesita margen propio, lo da .ficha-seccion */
-.ficha-resumen .ficha-features-grid { margin-bottom: 0; }
-.ficha-resumen .resumen-detalles-extra { margin-top: 1.1rem; }
-
 .seccion-detalles {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -668,13 +681,13 @@ h3 { font-size: 1.2rem; }
     font-size: 16pt;
   }
 
-  /* ---- Features y secciones: quitar fondos grises, mantener bordes ---- */
-  .ficha-features-grid {
+  /* ---- Resumen y secciones: quitar fondos grises, mantener bordes ---- */
+  .resumen-tabla {
     background: #fff !important;
     border: 1px solid #ccc;
     page-break-inside: avoid;
   }
-  .feature-item { break-inside: avoid; }
+  .resumen-fila { break-inside: avoid; }
 
   .ficha-seccion,
   .ficha-comodidades,

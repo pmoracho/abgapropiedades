@@ -78,83 +78,73 @@ eleventyComputed:
           </div>
         </div>
 
-        <!-- Resumen: grilla de iconos (campos estructurados) + datos extra
-             del scraper que no tienen campo estructurado propio -->
+        <!-- Resumen: una sola tabla orgánica que combina campos estructurados
+             (con icono) y datos extra del scraper sin campo propio (sin icono),
+             todos como filas de la misma lista — no dos widgets separados. -->
         <div class="ficha-seccion ficha-resumen">
           <h2 data-i18n="ficha_resumen">Resumen</h2>
 
-          <div class="ficha-features-grid">
-          {% if prop.ambientes %}
-          <div class="feature-item">
-            <span class="feature-icono">🏠</span>
-            <span class="feature-valor">{{ prop.ambientes }}</span>
-            <span class="feature-label" data-i18n="feat_ambientes">Ambientes</span>
-          </div>{% endif %}
-          {% if prop.dormitorios %}
-          <div class="feature-item">
-            <span class="feature-icono">🛏</span>
-            <span class="feature-valor">{{ prop.dormitorios }}</span>
-            <span class="feature-label" data-i18n="feat_dormitorios">Dormitorios</span>
-          </div>{% endif %}
-          {% if prop.banos %}
-          <div class="feature-item">
-            <span class="feature-icono">🚿</span>
-            <span class="feature-valor">{{ prop.banos }}</span>
-            <span class="feature-label" data-i18n="feat_banos">Baños</span>
-          </div>{% endif %}
-          {% if prop.superficie_cubierta %}
-          <div class="feature-item">
-            <span class="feature-icono">📐</span>
-            <span class="feature-valor">{{ prop.superficie_cubierta }}</span>
-            <span class="feature-label" data-i18n="feat_sup_cubierta">m² cubiertos</span>
-          </div>{% endif %}
-          {% if prop.superficie_total and prop.superficie_total != prop.superficie_cubierta %}
-          <div class="feature-item">
-            <span class="feature-icono">🌿</span>
-            <span class="feature-valor">{{ prop.superficie_total }}</span>
-            <span class="feature-label" data-i18n="feat_sup_total">m² totales</span>
-          </div>{% endif %}
-          {% if prop.cochera %}
-          <div class="feature-item">
-            <span class="feature-icono">🚗</span>
-            <span class="feature-valor" data-i18n="feat_si">Sí</span>
-            <span class="feature-label" data-i18n="feat_cochera">Cochera</span>
-          </div>{% endif %}
-          {% if prop.piso %}
-          <div class="feature-item">
-            <span class="feature-icono">🏢</span>
-            <span class="feature-valor">{{ prop.piso }}°</span>
-            <span class="feature-label" data-i18n="feat_piso">Piso</span>
-          </div>{% endif %}
-          {% if prop.antiguedad !== undefined and prop.antiguedad !== null %}
-          <div class="feature-item">
-            <span class="feature-icono">📅</span>
-            <span class="feature-valor">
-              {% if prop.antiguedad === 0 %}
-                <span data-i18n="feat_nuevo">Nuevo</span>
-              {% else %}
-                {{ prop.antiguedad }} <span data-i18n="feat_anios">años</span>
-              {% endif %}
-            </span>
-            <span class="feature-label" data-i18n="feat_antiguedad">Antigüedad</span>
-          </div>{% endif %}
-          {% if prop.expensas %}
-          <div class="feature-item">
-            <span class="feature-icono">💰</span>
-            <span class="feature-valor">{{ prop.expensas | formatPrice(prop.expensas_moneda or 'ARS') }}</span>
-            <span class="feature-label" data-i18n="feat_expensas">Expensas</span>
-          </div>{% endif %}
-          </div>
+          <dl class="resumen-tabla">
+            {% if prop.ambientes %}
+            <div class="resumen-fila">
+              <dt><span class="resumen-icono">🏠</span><span data-i18n="feat_ambientes">Ambientes</span></dt>
+              <dd>{{ prop.ambientes }}</dd>
+            </div>{% endif %}
+            {% if prop.dormitorios %}
+            <div class="resumen-fila">
+              <dt><span class="resumen-icono">🛏</span><span data-i18n="feat_dormitorios">Dormitorios</span></dt>
+              <dd>{{ prop.dormitorios }}</dd>
+            </div>{% endif %}
+            {% if prop.banos %}
+            <div class="resumen-fila">
+              <dt><span class="resumen-icono">🚿</span><span data-i18n="feat_banos">Baños</span></dt>
+              <dd>{{ prop.banos }}</dd>
+            </div>{% endif %}
+            {% if prop.superficie_cubierta %}
+            <div class="resumen-fila">
+              <dt><span class="resumen-icono">📐</span><span data-i18n="feat_sup_cubierta">m² cubiertos</span></dt>
+              <dd>{{ prop.superficie_cubierta }}</dd>
+            </div>{% endif %}
+            {% if prop.superficie_total and prop.superficie_total != prop.superficie_cubierta %}
+            <div class="resumen-fila">
+              <dt><span class="resumen-icono">🌿</span><span data-i18n="feat_sup_total">m² totales</span></dt>
+              <dd>{{ prop.superficie_total }}</dd>
+            </div>{% endif %}
+            {% if prop.cochera %}
+            <div class="resumen-fila">
+              <dt><span class="resumen-icono">🚗</span><span data-i18n="feat_cochera">Cochera</span></dt>
+              <dd data-i18n="feat_si">Sí</dd>
+            </div>{% endif %}
+            {% if prop.piso %}
+            <div class="resumen-fila">
+              <dt><span class="resumen-icono">🏢</span><span data-i18n="feat_piso">Piso</span></dt>
+              <dd>{{ prop.piso }}°</dd>
+            </div>{% endif %}
+            {% if prop.antiguedad !== undefined and prop.antiguedad !== null %}
+            <div class="resumen-fila">
+              <dt><span class="resumen-icono">📅</span><span data-i18n="feat_antiguedad">Antigüedad</span></dt>
+              <dd>
+                {% if prop.antiguedad === 0 %}
+                  <span data-i18n="feat_nuevo">Nuevo</span>
+                {% else %}
+                  {{ prop.antiguedad }} <span data-i18n="feat_anios">años</span>
+                {% endif %}
+              </dd>
+            </div>{% endif %}
+            {% if prop.expensas %}
+            <div class="resumen-fila">
+              <dt><span class="resumen-icono">💰</span><span data-i18n="feat_expensas">Expensas</span></dt>
+              <dd>{{ prop.expensas | formatPrice(prop.expensas_moneda or 'ARS') }}</dd>
+            </div>{% endif %}
 
-          <!-- Datos extra del scraper sin campo estructurado propio
-               (p.ej. orientación, luminosidad, vestidor, master suite...)
-               generados dinámicamente — no requieren tocar el template
-               cuando aparece una propiedad con campos distintos. -->
-          {% set extras = prop | resumenExtra %}
-          {% if extras.length %}
-          <dl class="seccion-detalles resumen-detalles-extra">
+            <!-- Datos extra del scraper sin campo estructurado propio
+                 (p.ej. orientación, luminosidad, vestidor, master suite...)
+                 generados dinámicamente — no requieren tocar el template
+                 cuando aparece una propiedad con campos distintos. Se
+                 integran como filas más de la misma tabla, sin icono. -->
+            {% set extras = prop | resumenExtra %}
             {% for item in extras %}
-            <div class="detalle-item"
+            <div class="resumen-fila"
               data-clave-es="{{ item.clave }}" data-clave-en="{{ item.clave_en }}"
               data-valor-es="{{ item.valor }}" data-valor-en="{{ item.valor_en }}">
               <dt>{{ item.clave }}</dt>
@@ -162,7 +152,6 @@ eleventyComputed:
             </div>
             {% endfor %}
           </dl>
-          {% endif %}
         </div>
 
         <!-- Descripción -->
