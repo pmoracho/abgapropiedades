@@ -1,0 +1,108 @@
+id: penthouse-618m-5-ambientes-8-cocheras
+sku: AP-680
+titulo: Av. Alvear y Parera, Recoleta, Capital Federal
+titulo_en: ''
+operacion: venta
+precio: CONSULTAR PRECIO
+tipo: departamento
+destacada: false
+estado: activa
+expensas: 3800000
+expensas_moneda: ARS
+barrio: Recoleta
+partido: Capital Federal
+direccion: Av. Alvear y Parera, Recoleta, Capital Federal
+lat: -34.5904395
+lng: -58.3871204
+ambientes: 9
+dormitorios: 5
+banos: 5
+superficie_cubierta: 618
+superficie_total: 691
+cochera: true
+descripcion: 'PENTHOUSE UNICO, ALTÍSIMO VISTA PANORÁMICA A CIUDAD Y RIO, RECEPCIÓN
+  128m piso Mármol de Carrara se extiende a BALCÓN TERRAZA con vista a Río y Ciudad,
+  AMPLIO COMEDOR, ESCRITORIO DOBLE separado por puertas corredizas con Bibliotecas
+  empotradas de cedro, 4 SUITE la Principal con 2 VESTIDORES y 2 BAÑOS con Mármoles
+  y Vista. 3 Dependencias, Amplia COCINA con Isla, Gran Office, 2 Bauleras, 4 COCHERAS
+  FIJAS Dobles, todo el piso en materiales de máxima calidad en impecable estado,
+  Pisos de Roble. EDIFICIO EN TORRE con entrada estilo Imperial, con Ascensores codificados,
+  SEGURIDAD en todas las áreas las 24hs. La UBICACIÓN privilegiada sobre AV. ALVEAR
+  la más Distinguida y Tradicional de Buenos Aires, a pasos de Plaza Carlos Pellegrini,
+  Jockey Club, Plaza de Cataluña, próximo a Paque Thays, Plaza Francia, Hoteles de
+  Primera Línea, Shopping, Teatros, Cines, Bares y Restos. SKU: AP-680 Categoría:
+  Venta'
+descripcion_en: ''
+comodidades: []
+comodidades_en: []
+secciones:
+  CARACTERÍSTICAS INMUEBLE:
+    detalles:
+      PRECIO: CONSULTAR PRECIO
+      EXPENSAS: $ 3.800.000
+      SUPERFICIE CUBIERTA: 618 m2
+      SUPERFICIE TOTAL: 691 m2
+      ANTIGÜEDAD: '34'
+      LUMINOSIDAD: Muy luminoso
+      AMBIENTES: '9'
+      DORMITORIOS: '5'
+      DORMITORIO EN SUITE: '4'
+      VESTIDOR: Sí
+      BAÑOS: '5'
+      TOILETTE: '2'
+    items:
+    - LIVING COMEDOR
+    - LIVING
+    - COMEDOR
+    - ESCRITORIO
+    - COCINA
+    - COMEDOR DE DIARIO
+    - DEPENDENCIA DE SERVICIO
+    - LAVADERO
+    - TERRAZA
+    - BALCÓN
+    - COCHERAS
+    - BAULERA
+  SERVICIOS GENERALES:
+    items:
+    - AIRE ACONDICIONADO
+    - CALEFACCIÓN
+    - VIGILANCIA/ENCARGADO
+    - GIMNASIO
+  CARACTERÍSTICAS GENERALES:
+    detalles:
+      CANTIDAD DE ASCENSORES: '5'
+      CATEGORIA DEL EDIFICIO: Excelente
+      CANTIDAD DE DORMITORIOS: '5'
+      TIPO DE EDIFICIO: Torre
+      ESTADO DEL EDIFICIO: Excelente
+      ESTADO DEL INMUEBLE: Excelente
+      LUMINOSIDAD: Muy luminoso
+fotos:
+- 25_AP_.jpg
+- 25_AP_10.jpg
+- 25_AP_11.jpg
+- 25_AP_12.jpg
+- 25_AP_13.jpg
+- 25_AP_14.jpg
+- 25_AP_15.jpg
+- 25_AP_16.jpg
+- 25_AP_17.jpg
+- 25_AP_18.jpg
+- 25_AP_19.jpg
+- 25_AP_2.jpg
+- 25_AP_20.jpg
+- 25_AP_21.jpg
+- 25_AP_22.jpg
+- 25_AP_23.jpg
+- 25_AP_24.jpg
+- 25_AP_25.jpg
+- 25_AP_26.jpg
+- 25_AP_3.jpg
+- 25_AP_4.jpg
+- 25_AP_5.jpg
+- 25_AP_6.jpg
+- 25_AP_7.jpg
+- 25_AP_8.jpg
+- 25_AP_9.jpg
+foto_portada: 25_AP_.jpg
