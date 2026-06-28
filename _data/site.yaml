@@ -39,3 +39,7 @@ colores:
 
 seo:
   url_base: "https://abgapropiedades.com"
+
+author: 
+  nombre: "Patricio Moracho"
+  email: "pmoracho@gmail.com"
