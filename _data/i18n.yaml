@@ -33,6 +33,7 @@ es:
   feat_nuevo: "Nuevo"
   feat_anios: "años"
   feat_si: "Sí"
+  feat_expensas: "Expensas"
   # Badges
   badge_venta: "En venta"
   badge_alquiler: "En alquiler"
@@ -42,6 +43,7 @@ es:
   badge_vendida: "Vendida"
   badge_alquilada: "Alquilada"
   # Ficha
+  ficha_resumen: "Resumen"
   ficha_descripcion: "Descripción"
   ficha_comodidades: "Comodidades"
   ficha_ver_fotos: "Ver todas las fotos"
@@ -129,6 +131,7 @@ en:
   feat_nuevo: "New"
   feat_anios: "years"
   feat_si: "Yes"
+  feat_expensas: "HOA fees"
   badge_venta: "For sale"
   badge_alquiler: "For rent"
   badge_temporario: "Short-term"
@@ -136,6 +139,7 @@ en:
   badge_nuevo: "Brand new"
   badge_vendida: "Sold"
   badge_alquilada: "Rented"
+  ficha_resumen: "Summary"
   ficha_descripcion: "Description"
   ficha_comodidades: "Amenities"
   ficha_ver_fotos: "View all photos"

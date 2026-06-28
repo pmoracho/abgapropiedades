@@ -48,6 +48,99 @@ module.exports = function (eleventyConfig) {
     return (labels[lang] || labels.es)[tipo] || tipo;
   });
 
+  // ---- Resumen dinámico de la ficha de propiedad ----
+  //
+  // Combina campos estructurados (prop.precio, prop.ambientes, etc.) con
+  // cualquier dato extra que venga en secciones["CARACTERÍSTICAS INMUEBLE"]
+  // del scraper, SIN duplicar lo que ya está cubierto por un campo
+  // estructurado. Las claves del scraper vienen en mayúsculas con acentos
+  // (p.ej. "ORIENTACIÓN", "DEPENDENCIA DE SERVICIO") — se normalizan para
+  // poder filtrarlas contra el set de claves ya cubiertas.
+
+  function normalizeKey(str) {
+    return str
+      .toUpperCase()
+      .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // quitar acentos
+      .trim();
+  }
+
+  // Claves del scraper que ya están representadas por un campo estructurado
+  // (precio, expensas, ambientes, dormitorios, baños, m² cubiertos/totales,
+  // antigüedad). Si el scraper trae alguna de estas, se descarta para no
+  // duplicar el dato en el Resumen.
+  const CLAVES_CUBIERTAS = new Set([
+    "PRECIO", "EXPENSAS",
+    "AMBIENTES",
+    "DORMITORIOS", "CANTIDAD DE DORMITORIOS",
+    "BANOS", "BAÑOS",
+    "SUPERFICIE CUBIERTA", "SUPERFICIE TOTAL",
+    "ANTIGUEDAD", "ANTIGÜEDAD",
+    "COCHERA", "COCHERAS",
+    "PISO",
+  ]);
+
+  // Traducciones EN para claves del scraper que no tienen campo estructurado
+  // propio. Si una clave nueva aparece y no está acá, se muestra tal cual
+  // viene (en español) — agregar la traducción aquí cuando se detecte.
+  const TRADUCCION_CLAVE_EN = {
+    "ORIENTACIÓN": "Orientation",
+    "DISPOSICIÓN": "Position",
+    "LUMINOSIDAD": "Natural light",
+    "MASTER SUITE": "Master suite",
+    "VESTIDOR": "Walk-in closet",
+    "HALL": "Entrance hall",
+    "LIVING COMEDOR": "Living/dining room",
+    "ESCRITORIO": "Study",
+    "TOILETTE": "Powder room",
+    "COCINA": "Kitchen",
+    "COMEDOR DE DIARIO": "Breakfast room",
+    "DEPENDENCIA DE SERVICIO": "Staff quarters",
+    "LAVADERO": "Laundry room",
+    "DORMITORIO EN SUITE": "En-suite bedroom",
+    "CATEGORIA DEL EDIFICIO": "Building category",
+    "TIPO DE EDIFICIO": "Building type",
+    "ESTADO DEL EDIFICIO": "Building condition",
+  };
+
+  const TRADUCCION_VALOR_EN = {
+    "sí": "Yes", "si": "Yes", "no": "No",
+    "frente": "Front", "contrafrente": "Back", "lateral": "Side",
+    "excelente": "Excellent", "muy luminosa": "Very bright",
+    "muy luminoso": "Very bright", "primera categoría": "First class",
+  };
+
+function toTitleCase(str) {
+    // Nota: \b en JS no reconoce bien los límites alrededor de vocales
+    // acentuadas (ej. "ORIENTACIÓN" → "OrientacióN" con \b\w). Separamos
+    // por espacios y capitalizamos cada palabra completa en su lugar.
+    return str
+      .toLowerCase()
+      .split(" ")
+      .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+      .join(" ");
+  }
+
+  eleventyConfig.addFilter("resumenExtra", (prop) => {
+    const secciones = prop.secciones || {};
+    // Buscar la sección de características del inmueble por nombre conocido
+    const caract = secciones["CARACTERÍSTICAS INMUEBLE"] || secciones["CARACTERISTICAS INMUEBLE"];
+    if (!caract || !caract.detalles) return [];
+
+    const cubiertas = new Set([...CLAVES_CUBIERTAS]);
+    const extra = [];
+    for (const [claveOriginal, valor] of Object.entries(caract.detalles)) {
+      const normalizada = normalizeKey(claveOriginal);
+      if (cubiertas.has(normalizada)) continue;
+      extra.push({
+        clave: toTitleCase(claveOriginal),
+        clave_en: TRADUCCION_CLAVE_EN[claveOriginal] || toTitleCase(claveOriginal),
+        valor: valor,
+        valor_en: TRADUCCION_VALOR_EN[String(valor).toLowerCase()] || valor,
+      });
+    }
+    return extra;
+  });
+
   return {
     dir: {
       input: "src",

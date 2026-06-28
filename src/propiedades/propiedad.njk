@@ -11,7 +11,10 @@ eleventyComputed:
   og_image: "{% if prop.fotos %}/propiedades/{{ prop.id }}/{{ prop.foto_portada or prop.fotos[0] }}{% endif %}"
 ---
 
-<div class="prop-ficha" data-pagefind-body>
+<div class="prop-ficha"
+  data-pagefind-body
+  data-contacto-tel="{{ site.contacto.telefono }}"
+  data-contacto-email="{{ site.contacto.email }}">
 
   <div class="container">
     <nav class="breadcrumb">
@@ -75,8 +78,12 @@ eleventyComputed:
           </div>
         </div>
 
-        <!-- Features grid -->
-        <div class="ficha-features-grid">
+        <!-- Resumen: grilla de iconos (campos estructurados) + datos extra
+             del scraper que no tienen campo estructurado propio -->
+        <div class="ficha-seccion ficha-resumen">
+          <h2 data-i18n="ficha_resumen">Resumen</h2>
+
+          <div class="ficha-features-grid">
           {% if prop.ambientes %}
           <div class="feature-item">
             <span class="feature-icono">🏠</span>
@@ -131,6 +138,31 @@ eleventyComputed:
             </span>
             <span class="feature-label" data-i18n="feat_antiguedad">Antigüedad</span>
           </div>{% endif %}
+          {% if prop.expensas %}
+          <div class="feature-item">
+            <span class="feature-icono">💰</span>
+            <span class="feature-valor">{{ prop.expensas | formatPrice(prop.expensas_moneda or 'ARS') }}</span>
+            <span class="feature-label" data-i18n="feat_expensas">Expensas</span>
+          </div>{% endif %}
+          </div>
+
+          <!-- Datos extra del scraper sin campo estructurado propio
+               (p.ej. orientación, luminosidad, vestidor, master suite...)
+               generados dinámicamente — no requieren tocar el template
+               cuando aparece una propiedad con campos distintos. -->
+          {% set extras = prop | resumenExtra %}
+          {% if extras.length %}
+          <dl class="seccion-detalles resumen-detalles-extra">
+            {% for item in extras %}
+            <div class="detalle-item"
+              data-clave-es="{{ item.clave }}" data-clave-en="{{ item.clave_en }}"
+              data-valor-es="{{ item.valor }}" data-valor-en="{{ item.valor_en }}">
+              <dt>{{ item.clave }}</dt>
+              <dd>{{ item.valor }}</dd>
+            </div>
+            {% endfor %}
+          </dl>
+          {% endif %}
         </div>
 
         <!-- Descripción -->
@@ -159,6 +191,7 @@ eleventyComputed:
              o agregadas a mano: CARACTERÍSTICAS INMUEBLE, SERVICIOS GENERALES, etc.) -->
         {% if prop.secciones %}
         {% for titulo, contenido in prop.secciones %}
+        {% if titulo != "CARACTERÍSTICAS INMUEBLE" and titulo != "CARACTERISTICAS INMUEBLE" %}
         <div class="ficha-seccion">
           <h2>{{ titulo }}</h2>
 
@@ -181,13 +214,14 @@ eleventyComputed:
           </ul>
           {% endif %}
         </div>
+        {% endif %}
         {% endfor %}
         {% endif %}
 
         <!-- Google Maps -->
         {% if prop.lat and prop.lng %}
         <div class="ficha-mapa">
-          <h2 data-i18n="ficha_mapa">Ubicación</h2>
+          <h2 data-i18n="ficha_mapa" data-maps-url="https://www.google.com/maps?q={{ prop.lat }},{{ prop.lng }}">Ubicación</h2>
           <div class="mapa-wrap">
             <iframe
               title="Ubicación de {{ prop.titulo }}"

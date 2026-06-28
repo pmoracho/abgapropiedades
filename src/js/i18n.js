@@ -68,6 +68,17 @@
       if (val) el.textContent = val;
     });
 
+    // Detalles extra del Resumen (clave/valor del scraper sin campo
+    // estructurado propio): data-clave-es/en + data-valor-es/en
+    document.querySelectorAll(".resumen-detalles-extra .detalle-item").forEach((el) => {
+      const dt = el.querySelector("dt");
+      const dd = el.querySelector("dd");
+      const clave = lang === "en" ? el.dataset.claveEn : el.dataset.claveEs;
+      const valor = lang === "en" ? el.dataset.valorEn : el.dataset.valorEs;
+      if (dt && clave) dt.textContent = clave;
+      if (dd && valor) dd.textContent = valor;
+    });
+
     // Tagline del sitio (hero, footer) con data-tagline-es / data-tagline-en
     document.querySelectorAll("[data-tagline-es]").forEach((el) => {
       const val = lang === "en" ? el.dataset.taglineEn : el.dataset.taglineEs;
@@ -81,8 +92,7 @@
     });
 
     // Comodidades con data-comodidades-es / data-comodidades-en
-    document.querySelectorAll("[data-comodidades-es]").forEach((ul) => {
-      try {
+    document.querySelectorAll("[data-comodidades-es]").forEach((ul) => {      try {
         const list = JSON.parse(
           lang === "en" ? ul.dataset.comodidadesEn : ul.dataset.comodidadesEs
         );

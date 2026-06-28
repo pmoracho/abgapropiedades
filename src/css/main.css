@@ -522,6 +522,10 @@ h3 { font-size: 1.2rem; }
 .ficha-seccion { margin-bottom: 1.75rem; }
 .ficha-seccion h2 { margin-bottom: 0.9rem; font-size: 1.15rem; }
 
+/* Resumen: el grid de iconos no necesita margen propio, lo da .ficha-seccion */
+.ficha-resumen .ficha-features-grid { margin-bottom: 0; }
+.ficha-resumen .resumen-detalles-extra { margin-top: 1.1rem; }
+
 .seccion-detalles {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -576,4 +580,150 @@ h3 { font-size: 1.2rem; }
   max-width: 120px;
   opacity: 0.85;
   margin-bottom: 0.5rem;
+}
+
+/* ============================================================
+   IMPRESIÓN — versión amigable para papel/PDF
+   Oculta navegación, acciones y elementos interactivos.
+   Convierte degradados a blanco/negro para ahorrar tinta.
+   ============================================================ */
+@media print {
+
+  /* ---- Reset general ---- */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    background: transparent !important;
+    color: #000 !important;
+  }
+  body {
+    background: #fff !important;
+    font-size: 11pt;
+    line-height: 1.4;
+  }
+  a { color: #000 !important; text-decoration: none !important; }
+  .container { max-width: 100%; padding: 0 0.5cm; }
+
+  /* ---- Ocultar navegación, footer y elementos interactivos ---- */
+  .site-header,
+  .site-footer,
+  .nav-toggle,
+  .lang-switcher,
+  .busqueda-section,
+  .pagefind-search,
+  .filtros,
+  .breadcrumb,
+  .galeria-ver-todas,
+  .lightbox,
+  .contacto-card,
+  .ficha-id,
+  .mapa-wrap iframe,
+  .mapa-abrir,
+  .mapa-abrir-pendiente,
+  .nav-cta,
+  .btn,
+  .filtro-limpiar,
+  .form-consulta,
+  .contacto-form-toggle {
+    display: none !important;
+  }
+
+  /* ---- Galería: solo la foto de portada, sin grilla ni lightbox ---- */
+  .galeria-wrap { background: #fff !important; }
+  .galeria {
+    display: block !important;
+    max-height: none !important;
+    height: auto !important;
+  }
+  .galeria-item { display: none !important; }
+  .galeria-item--principal {
+    display: block !important;
+    width: 100% !important;
+    max-height: 9cm;
+    overflow: hidden;
+    margin-bottom: 0.5cm;
+  }
+  .galeria-item--principal img {
+    width: 100%; height: auto; object-fit: cover;
+    max-height: 9cm;
+  }
+
+  /* ---- Layout de la ficha: una sola columna a ancho completo ---- */
+  .ficha-layout {
+    display: block !important;
+    grid-template-columns: none !important;
+  }
+  .ficha-aside { display: none !important; }
+  .ficha-main { width: 100% !important; }
+
+  /* ---- Tipografía y badges sin color de fondo ---- */
+  .ficha-titulo { font-size: 18pt; margin-bottom: 0.2cm; }
+  .badge {
+    border: 1px solid #000 !important;
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .precio-valor, .precio-valor--grande {
+    color: #000 !important;
+    font-size: 16pt;
+  }
+
+  /* ---- Features y secciones: quitar fondos grises, mantener bordes ---- */
+  .ficha-features-grid {
+    background: #fff !important;
+    border: 1px solid #ccc;
+    page-break-inside: avoid;
+  }
+  .feature-item { break-inside: avoid; }
+
+  .ficha-seccion,
+  .ficha-comodidades,
+  .ficha-descripcion {
+    page-break-inside: avoid;
+  }
+  .seccion-items li,
+  .comodidades-lista li {
+    background: #fff !important;
+    border: 1px solid #ccc !important;
+  }
+  .detalle-item { border-bottom: 1px solid #ccc !important; }
+
+  /* ---- Mapa: mostrar como referencia de texto, no iframe ---- */
+  .ficha-mapa h2::after {
+    content: " — ver en Google Maps: " attr(data-maps-url);
+    font-size: 9pt;
+    font-weight: normal;
+  }
+  .mapa-pendiente {
+    border: 1px solid #ccc !important;
+    padding: 0.3cm;
+  }
+
+  /* ---- Datos de contacto: agregar como texto simple al pie de la ficha ---- */
+  .prop-ficha::after {
+    content: "Contacto: " attr(data-contacto-tel) " · " attr(data-contacto-email);
+    display: block;
+    margin-top: 0.5cm;
+    padding-top: 0.3cm;
+    border-top: 1px solid #ccc;
+    font-size: 9pt;
+  }
+
+  /* ---- Evitar cortes de página feos ---- */
+  h1, h2, h3 { page-break-after: avoid; }
+  img { page-break-inside: avoid; }
+
+  /* ---- Listado de propiedades (index): grid a 2 columnas, sin hover/sombras ---- */
+  .prop-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.5cm;
+  }
+  .prop-card {
+    border: 1px solid #ccc !important;
+    break-inside: avoid;
+  }
+  .prop-card:hover { transform: none !important; }
+  .hero { padding: 0.3cm 0 !important; }
+  .hero-sub { display: none !important; }
 }
