@@ -149,11 +149,11 @@ h3 { font-size: 1.2rem; }
 .hero-titulo { color: #fff; margin-bottom: 0.35rem; font-size: clamp(1.5rem, 3vw, 2.1rem); }
 .hero-sub {
   color: rgba(255,255,255,0.8);
-  max-width: 720px;
+  max-width: 900px;
   margin: 0 auto;
   font-size: 0.92rem;
   overflow: hidden;
-  text-overflow: ellipsis;
+  /* text-overflow: ellipsis; */
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;

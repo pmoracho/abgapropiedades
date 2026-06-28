@@ -14,6 +14,7 @@ descripcion:
 # Dejar en null para usar el nombre de texto como logo
 marca:
   logo: /img/logo.png         # ej: /img/logo.svg  — reemplazar cuando tengas el archivo
+  logo_footer: /img/logo_footer.png  # ej: /img/logo.svg  — reemplazar cuando tengas el archivo
   logo_ancho: 160             # px — ancho máximo del logo en el header
   favicon: /img/favicon.svg   # ej: /img/favicon.ico o /img/favicon.png
   favicon_svg: null           # ej: /img/favicon.svg — navegadores modernos prefieren SVG
