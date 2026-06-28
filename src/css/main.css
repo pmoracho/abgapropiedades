@@ -154,7 +154,7 @@ h3 { font-size: 1.2rem; }
   font-size: 0.92rem;
   overflow: hidden;
   /* text-overflow: ellipsis; */
-  display: -webkit-box;
+  /* display: -webkit-box; */
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
 }
@@ -543,7 +543,8 @@ h3 { font-size: 1.2rem; }
 }
 
 .seccion-items {
-  list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem;
+  list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; font-size: 0.9em;
+  margin-top: 30px;
 }
 .seccion-items li {
   background: #f1f0ed; padding: 0.4rem 0.8rem;

@@ -1,6 +1,6 @@
 id: guillermo-rawson-mariano-pelliza-olivos-vicente-lopez
-titulo: Guillermo Rawson & Mariano Pelliza, Olivos
-titulo_en: ''
+titulo: Magnífica Casa Olivos – 740M2 – Parque 1516M2 – Pileta – Quincho – 3 Plantas
+titulo_en: Magnificent House Olivos – 740M2 – Park 1516M2 – Pool – Grill – 3 Floors
 operacion: venta
 tipo: departamento
 destacada: false
@@ -13,8 +13,8 @@ direccion: Guillermo Rawson & Mariano Pelliza, Olivos, Vicente López
 ambientes: 10
 dormitorios: 7
 banos: 6
-lat: -34.5089
-lng: -58.4965
+lat: -34.5047293
+lng: -58.4845498  
 superficie_cubierta: 740
 superficie_total: 1516
 descripcion: 'MAGNÍFICA CASA rodeada de Parques Arboles y vegetación exótica. 1516m.
@@ -32,9 +32,37 @@ descripcion: 'MAGNÍFICA CASA rodeada de Parques Arboles y vegetación exótica.
   SEGURIDAD Perimetral. PORTONES Automáticos. CÁMARAS de Seguridad. TELEFONÍA Interna
   . RED de Datos. ILUMINACIÓN Led Automatizada. BAJO costo de mantenimiento. ZONA
   RESIDENCIAL, de calles arboladas y Seguridad. Cerca del Colegio San Andres y Torguet.'
-descripcion_en: ''
-comodidades: []
-comodidades_en: []
+descripcion_en: 'MAGNIFICENT HOUSE surrounded by Gardens, Trees and exotic vegetation.
+  1516m2 lot. WARMTH and COMFORT across 3 levels, MID CENTURY MODERN STYLE
+  construction on 740m2. GROUND FLOOR: SPACIOUS LIVING ROOM with FIREPLACE,
+  DINING ROOM and STUDY, EN-SUITE TOILETTE with WALK-IN CLOSET, partitioned
+  bathroom with large windows overlooking the gardens. TWO BEDROOMS sharing
+  a bathroom. INTIMATE LIVING ROOM with views, full of light and sun. UPPER
+  FLOOR: TWO BEDROOMS, shared bathroom and STUDY, SPACIOUS TERRACE surrounded
+  by trees. BASEMENT: Spacious PLAYROOM with fireplace, STAFF QUARTERS with
+  2 bedrooms and a full bathroom. Central HEATING and HOT WATER. GARAGE for
+  4 cars plus outdoor space for 4 more cars, WORKSHOP. QUINCHO (covered
+  entertaining area) for 16 people with grill and wood-fired oven, and
+  HEATED POOL. CHANGING ROOMS with shower and restrooms. GARDENS with trees
+  of varied species embracing the house, giving it warmth and magnetic
+  charm, with birdsong, enjoying the quiet, the light, the SUN. POND: a
+  variety of fish and colors. FACILITIES: Perimeter SECURITY. Automatic
+  GATES. Security CAMERAS. Internal TELEPHONE system. Data NETWORK.
+  Automated LED LIGHTING. LOW maintenance cost. RESIDENTIAL AREA, with
+  tree-lined streets and security. Close to San Andrés and Torcuato di
+  Tella schools.'  
+comodidades: [vestidor, hall, amplio living, comedor, escritorio, living intimo, playroom, altillo, 
+              balcón, baulera, pileta climatizada / vestuarios, terraza amplia, jardines / estanque, 
+              quincho con horno de barro, garage para 4 coches, frente del terreno 40m, largo del terreno 50m,
+              calefacción y agua caliente central, aire acondicionado, seguridad perimetral, portones automáticos, 
+              cámaras de seguridad]
+comodidades_en: [walk-in closet, entrance hall, spacious living room, dining room, study,
+              intimate living room, playroom, attic,
+              balcony, storage room, heated pool / changing rooms, spacious terrace,
+              gardens / pond, quincho with wood-fired oven, garage for 4 cars,
+              lot frontage 40m, lot depth 50m,
+              central heating and hot water, air conditioning, perimeter security,
+              automatic gates, security cameras]
 secciones:
   CARACTERÍSTICAS INMUEBLE:
     detalles:
@@ -50,31 +78,7 @@ secciones:
       BAÑOS: '6'
       TOILETTE: '1'
       DEPENDENCIA DE SERVICIO: 2 dorm y baño completo
-    items:
-    - VESTIDOR
-    - HALL
-    - AMPLIO LIVING
-    - COMEDOR
-    - ESCRITORIO
-    - LIVING INTIMO
-    - PLAYROOM
-    - ALTILLO
-    - BALCÓN
-    - BAULERA
-    - PILETA CLIMATIZADA / VESTUARIOS
-    - TERRAZA AMPLIA
-    - JARDINES / ESTANQUE
-    - QUINCHO CON HORNO DE BARRO
-    - GARAGE PARA 4 COCHES
-    - FRENTE DEL TERRENO 40M
-    - LARGO DEL TERRENO 50M
-  INSTALACIONES:
-    items:
-    - CALEFACCIÓN Y AGUA CALIENTE CENTRAL
-    - AIRE ACONDICIONADO
-    - SEGURIDAD PERIMETRAL
-    - PORTONES AUTOMÁTICOS
-    - CÁMARAS DE SEGURIDAD
+      
 fotos:
 - olivos_.jpg
 - olivos_10.jpg
