@@ -1,0 +1,86 @@
+id: posadas-y-montevideo-recoleta-capital-federal-2
+titulo: Posadas y Montevideo, Recoleta, Capital Federal
+titulo_en: ''
+operacion: venta
+tipo: departamento
+destacada: false
+estado: activa
+precio: 880000
+moneda: USD
+expensas: 680000
+expensas_moneda: ARS
+barrio: Recoleta
+partido: Capital Federal
+direccion: Posadas y Montevideo, Recoleta, Capital Federal
+lat: -34.5887895
+lng: -58.3849536
+ambientes: 5
+dormitorios: 4
+banos: 3
+superficie_cubierta: 169
+superficie_total: 190
+cochera: true
+descripcion: 'EXCELENTE PISO TORRE, COCHERA FIJA. VISTA a JARDINES, TIPO CASA, Pallier
+  Privado, LIVING y COMEDOR en L pisos TARUGADOS , ESCRITORIO o 4to. DORMITORIO, Principal
+  en SUITE, COCINA OFFICE, LAVADERO, HABITACIÓN y BAÑO de SERVICIO, BAULERA, TODO
+  RODEADO DE JARDINES, confortable, cálido, con luz y sol, vigilancia 24hs. y seguridad,
+  en ótima ubicación, cerca de Av. Alvear, 9 de Julio, Av. Del Libertador, Plaza Francia,
+  Parque Thays, zona de negocios de primera línea, como Bares, Restós, Hoteles, Shopping,
+  Salas de cine, Teatro, Iglesia del Pilar. ABGA Propiedades.'
+descripcion_en: 'EXCELLENT HIGH-RISE APARTMENT, ASSIGNED PARKING SPACE. VIEW OF GARDENS, HOUSE-STYLE, Entry Hall
+  Private, L-Shaped Living and Dining Rooms with Hardwood Floors, Office or 4th Bedroom, Master
+  Suite, Open-Concept Kitchen, Laundry Room, Maid’s Room and Bathroom, Storage Room, ALL
+  SURROUNDED BY GARDENS, comfortable, warm, bright and sunny, 24-hour surveillance and security,
+  in a great location, near Alvear Ave., 9 de Julio Ave., Del Libertador Ave., Plaza Francia,
+  Thays Park, prime business district, including bars, restaurants, hotels, shopping centers,
+  movie theaters, a theater, and the Iglesia del Pilar.'
+caracteristicas_inmueble:
+- Hall
+- Dormitorio en Suite
+- Living
+- 'Comedor: sí'
+- 'Cocina: sí'
+- 'Comedor de Diario: sí'
+- 'Dependencia de Servicio: sí'
+- Lavadero
+- Baulera
+- 'Orientación: NE'
+- 'Disposición: Frente'
+servicios_generales:
+- Calefacción
+- Vigilancia /encargado
+- Balcón
+- Laundry
+- Gas Natural
+- Internet
+- Luz
+- Teléfono
+- Video Cable
+- Ascensor
+caracteristicas_generales:
+- 'Cantidad de Ascensores: 2'
+- 'Categoria del Edificio: Muy buena'
+- 'Tipo de Edificio: Torre'
+- 'Estado del Edificio: Excelente'
+- 'Luminosidad: Luminoso'
+- 'Cobertura Cochera: Cubierta'
+fotos:
+- IMG-20190106-WA0003.jpg
+- 10_pym.jpg
+- 11_pym.jpg
+- 12_pym.jpg
+- 13_pym.jpg
+- 14_pym.jpg
+- 15_pym.jpg
+- 1_pym.jpg
+- 2_pym.jpg
+- 3_pym.jpg
+- 4_pym.jpg
+- 5_pym.jpg
+- 6_pym.jpg
+- 7_pym.jpg
+- 8_pym.jpg
+- 9_pym.jpg
+- PYM-1.jpg
+foto_portada: IMG-20190106-WA0003.jpg
+sku: PM-167

@@ -1,7 +1,6 @@
 id: penthouse-618m-5-ambientes-8-cocheras
-sku: AP-680
 titulo: Av. Alvear y Parera, Recoleta, Capital Federal
-titulo_en: 'Av. Alvear & Parera, Recoleta, Buenos Aires'
+titulo_en: ''
 operacion: venta
 tipo: departamento
 destacada: false
@@ -19,6 +18,7 @@ banos: 5
 superficie_cubierta: 618
 superficie_total: 691
 cochera: true
+sku: AP-680
 descripcion: 'PENTHOUSE UNICO, ALTÍSIMO VISTA PANORÁMICA A CIUDAD Y RIO, RECEPCIÓN
   128m piso Mármol de Carrara se extiende a BALCÓN TERRAZA con vista a Río y Ciudad,
   AMPLIO COMEDOR, ESCRITORIO DOBLE separado por puertas corredizas con Bibliotecas
@@ -31,63 +31,47 @@ descripcion: 'PENTHOUSE UNICO, ALTÍSIMO VISTA PANORÁMICA A CIUDAD Y RIO, RECEP
   Jockey Club, Plaza de Cataluña, próximo a Paque Thays, Plaza Francia, Hoteles de
   Primera Línea, Shopping, Teatros, Cines, Bares y Restos. SKU: AP-680 Categoría:
   Venta'
-descripcion_en: 'UNIQUE PENTHOUSE, EXTREMELY HIGH PANORAMIC VIEWS OF THE CITY AND
-  RIVER. 128m RECEPTION with Carrara marble floors extending out to a BALCONY/TERRACE
-  overlooking the river and city. SPACIOUS DINING ROOM, DOUBLE STUDY separated by
-  sliding doors with built-in cedar bookcases. 4 SUITES, the master with 2 WALK-IN
-  CLOSETS and 2 BATHROOMS finished in marble with views. 3 staff quarters, spacious
-  KITCHEN with island, large pantry/office, 2 storage rooms, 4 fixed DOUBLE PARKING
-  SPACES. The entire floor finished in top-quality materials, in impeccable condition,
-  with oak flooring. TOWER BUILDING with an Imperial-style entrance, coded elevators,
-  and SECURITY in all areas 24 hours a day. The privileged LOCATION on AV. ALVEAR,
-  the most distinguished and traditional avenue in Buenos Aires, steps from Plaza
-  Carlos Pellegrini, the Jockey Club and Plaza de Cataluña, and close to Thays Park,
-  Plaza Francia, top-tier hotels, shopping, theaters, cinemas, bars and restaurants.'
-comodidades: []
-comodidades_en: []
-secciones:
-  CARACTERÍSTICAS INMUEBLE:
-    detalles:
-      PRECIO: CONSULTAR PRECIO
-      EXPENSAS: $ 3.800.000
-      SUPERFICIE CUBIERTA: 618 m2
-      SUPERFICIE TOTAL: 691 m2
-      ANTIGÜEDAD: '34'
-      LUMINOSIDAD: Muy luminoso
-      AMBIENTES: '9'
-      DORMITORIOS: '5'
-      DORMITORIO EN SUITE: '4'
-      VESTIDOR: Sí
-      BAÑOS: '5'
-      TOILETTE: '2'
-    items:
-    - LIVING COMEDOR
-    - LIVING
-    - COMEDOR
-    - ESCRITORIO
-    - COCINA
-    - COMEDOR DE DIARIO
-    - DEPENDENCIA DE SERVICIO
-    - LAVADERO
-    - TERRAZA
-    - BALCÓN
-    - COCHERAS
-    - BAULERA
-  SERVICIOS GENERALES:
-    items:
-    - AIRE ACONDICIONADO
-    - CALEFACCIÓN
-    - VIGILANCIA/ENCARGADO
-    - GIMNASIO
-  CARACTERÍSTICAS GENERALES:
-    detalles:
-      CANTIDAD DE ASCENSORES: '5'
-      CATEGORIA DEL EDIFICIO: Excelente
-      CANTIDAD DE DORMITORIOS: '5'
-      TIPO DE EDIFICIO: Torre
-      ESTADO DEL EDIFICIO: Excelente
-      ESTADO DEL INMUEBLE: Excelente
-      LUMINOSIDAD: Muy luminoso
+descripcion_en: 'UNIQUE PENTHOUSE, STUNNING PANORAMIC VIEWS OF THE CITY AND RIVER, ENTRANCE HALL
+  128m Carrara marble floor extending to a BALCONY-TERRACE with views of the river and city,
+  SPACIOUS DINING ROOM, DOUBLE OFFICE separated by sliding doors with
+  built-in cedar bookcases, 4 SUITES—the Master Suite featuring 2 WALK-IN CLOSETS and 2 BATHROOMS with marble
+  and a view. 3 Servant’s quarters, Spacious KITCHEN with an island, Large pantry, 2 storage rooms, 4
+  FIXED double parking spaces, the entire floor finished with top-quality materials in impeccable condition,
+  oak floors. TOWER BUILDING with an Imperial-style entrance, code-access elevators,
+  24-hour security in all areas. Prime LOCATION on Av. Alvear,
+  the most distinguished and traditional avenue in Buenos Aires, just steps from Plaza Carlos Pellegrini,
+  the Jockey Club, and Plaza de Cataluña, near Parque Thays, Plaza Francia, top-tier
+  hotels, shopping centers, theaters, movie theaters, bars, and restaurants. SKU: AP-680 Category:
+  For Sale'
+caracteristicas_inmueble:
+- 'Luminosidad: Muy luminoso'
+- 'Dormitorio en Suite: 4'
+- 'Vestidor: Sí'
+- 'Toilette: 2'
+- Living Comedor
+- Living
+- Comedor
+- Escritorio
+- Cocina
+- Comedor de Diario
+- Dependencia de Servicio
+- Lavadero
+- Terraza
+- Balcón
+- Cocheras
+- Baulera
+servicios_generales:
+- Aire Acondicionado
+- Calefacción
+- Vigilancia/encargado
+- Gimnasio
+caracteristicas_generales:
+- 'Cantidad de Ascensores: 5'
+- 'Categoria del Edificio: Excelente'
+- 'Tipo de Edificio: Torre'
+- 'Estado del Edificio: Excelente'
+- 'Estado del Inmueble: Excelente'
+- 'Luminosidad: Muy luminoso'
 fotos:
 - 25_AP_.jpg
 - 25_AP_10.jpg

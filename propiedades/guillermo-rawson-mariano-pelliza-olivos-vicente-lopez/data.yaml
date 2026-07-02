@@ -1,9 +1,8 @@
 id: guillermo-rawson-mariano-pelliza-olivos-vicente-lopez
-sku: GR 740
-titulo: Magnífica Casa Olivos – 740M2 – Parque 1516M2 – Pileta – Quincho – 3 Plantas
-titulo_en: Magnificent House Olivos – 740M2 – Park 1516M2 – Pool – Grill – 3 Floors
+titulo: Guillermo Rawson & Mariano Pelliza, Olivos
+titulo_en: ''
 operacion: venta
-tipo: departamento
+tipo: casa
 destacada: false
 estado: activa
 precio: 2680000
@@ -14,8 +13,6 @@ direccion: Guillermo Rawson & Mariano Pelliza, Olivos, Vicente López
 ambientes: 10
 dormitorios: 7
 banos: 6
-lat: -34.5047293
-lng: -58.4845498  
 superficie_cubierta: 740
 superficie_total: 1516
 descripcion: 'MAGNÍFICA CASA rodeada de Parques Arboles y vegetación exótica. 1516m.
@@ -33,53 +30,45 @@ descripcion: 'MAGNÍFICA CASA rodeada de Parques Arboles y vegetación exótica.
   SEGURIDAD Perimetral. PORTONES Automáticos. CÁMARAS de Seguridad. TELEFONÍA Interna
   . RED de Datos. ILUMINACIÓN Led Automatizada. BAJO costo de mantenimiento. ZONA
   RESIDENCIAL, de calles arboladas y Seguridad. Cerca del Colegio San Andres y Torguet.'
-descripcion_en: 'MAGNIFICENT HOUSE surrounded by Gardens, Trees and exotic vegetation.
-  1516m2 lot. WARMTH and COMFORT across 3 levels, MID CENTURY MODERN STYLE
-  construction on 740m2. GROUND FLOOR: SPACIOUS LIVING ROOM with FIREPLACE,
-  DINING ROOM and STUDY, EN-SUITE TOILETTE with WALK-IN CLOSET, partitioned
-  bathroom with large windows overlooking the gardens. TWO BEDROOMS sharing
-  a bathroom. INTIMATE LIVING ROOM with views, full of light and sun. UPPER
-  FLOOR: TWO BEDROOMS, shared bathroom and STUDY, SPACIOUS TERRACE surrounded
-  by trees. BASEMENT: Spacious PLAYROOM with fireplace, STAFF QUARTERS with
-  2 bedrooms and a full bathroom. Central HEATING and HOT WATER. GARAGE for
-  4 cars plus outdoor space for 4 more cars, WORKSHOP. QUINCHO (covered
-  entertaining area) for 16 people with grill and wood-fired oven, and
-  HEATED POOL. CHANGING ROOMS with shower and restrooms. GARDENS with trees
-  of varied species embracing the house, giving it warmth and magnetic
-  charm, with birdsong, enjoying the quiet, the light, the SUN. POND: a
-  variety of fish and colors. FACILITIES: Perimeter SECURITY. Automatic
-  GATES. Security CAMERAS. Internal TELEPHONE system. Data NETWORK.
-  Automated LED LIGHTING. LOW maintenance cost. RESIDENTIAL AREA, with
-  tree-lined streets and security. Close to San Andrés and Torcuato di
-  Tella schools.'  
-comodidades: [vestidor, hall, amplio living, comedor, escritorio, living intimo, playroom, altillo, 
-              balcón, baulera, pileta climatizada / vestuarios, terraza amplia, jardines / estanque, 
-              quincho con horno de barro, garage para 4 coches, frente del terreno 40m, largo del terreno 50m,
-              calefacción y agua caliente central, aire acondicionado, seguridad perimetral, portones automáticos, 
-              cámaras de seguridad]
-comodidades_en: [walk-in closet, entrance hall, spacious living room, dining room, study,
-              intimate living room, playroom, attic,
-              balcony, storage room, heated pool / changing rooms, spacious terrace,
-              gardens / pond, quincho with wood-fired oven, garage for 4 cars,
-              lot frontage 40m, lot depth 50m,
-              central heating and hot water, air conditioning, perimeter security,
-              automatic gates, security cameras]
-secciones:
-  CARACTERÍSTICAS INMUEBLE:
-    detalles:
-      PRECIO: USD 2.680.000
-      SUPERFICIE CUBIERTA: 740m2
-      SUPERFICIE TOTAL: 1516 m2
-      ANTIGÜEDAD: 48 años
-      ORIENTACIÓN: E
-      LUMINOSIDAD: Muy luminosa
-      AMBIENTES: '10'
-      DORMITORIOS: '7'
-      DORMITORIO EN SUITE: '1'
-      BAÑOS: '6'
-      TOILETTE: '1'
-      DEPENDENCIA DE SERVICIO: 2 dorm y baño completo
-      
+descripcion_en: 'MAGNIFICENT HOME surrounded by parks, trees, and exotic vegetation. 1516m. 
+  WARMTH and COMFORT across 3 floors in a MID-CENTURY MODERN STYLE home spanning 740 m². 
+  GROUND FLOOR: SPACIOUS LIVING ROOM with FIREPLACE, DINING AREA, and HOME OFFICE; 
+  SPACIOUS MASTER SUITE with WALK-IN CLOSET; separate bathroom with large windows overlooking 
+  the gardens. TWO BEDROOMS with a shared bathroom. INTIMATE LIVING ROOM with views, filled 
+  with light and sunshine. UPPER FLOOR: TWO BEDROOMS, shared bathroom, and a study. 
+  SPACIOUS TERRACE surrounded by trees. BASEMENT: SPACIOUS PLAYROOM with a fireplace. 
+  STAFF QUARTERS: 2 bedrooms and a full bathroom. CENTRAL HEATING and HOT WATER SYSTEM. 
+  GARAGE for 4 cars and outdoor parking for 4 cars, WORKSHOP. OUTDOOR KITCHEN for 16 people 
+  with a grill and clay oven, and HEATED POOL. CHANGING ROOMS with showers and restrooms. 
+  GARDENS with a variety of tree species that embrace the house, giving it a warm and 
+  magnetic charm; with birdsong, you can enjoy the tranquility, the light, and the SUN. 
+  POND: A variety of fish and colors. FACILITIES: Perimeter security. Automatic gates. 
+  Security cameras. Internal telephone system. Data network. Automated LED lighting. 
+  Low maintenance costs. RESIDENTIAL AREA with tree-lined streets and security. 
+  Close to San Andrés and Torguet Schools.'
+caracteristicas_inmueble:
+- 'Orientación: E'
+- 'Luminosidad: Muy luminosa'
+- 'Dormitorio en Suite: 1'
+- Vestidor
+- 'Toilette: 1'
+- Hall
+- Amplio Living
+- Comedor
+- Escritorio
+- Living Intimo
+- Playroom
+- 'Dependencia de Servicio: 2 dorm y baño completo'
+- Altillo
+- Balcón
+- Baulera
+- Pileta Climatizada / Vestuarios
+- Terraza Amplia
+- Jardines / Estanque
+- Quincho con Horno de Barro
+- Garage Para 4 Coches
+- Frente del Terreno 40m
+- Largo del Terreno 50m
 fotos:
 - olivos_.jpg
 - olivos_10.jpg
@@ -125,3 +114,4 @@ fotos:
 - olivos_8.jpg
 - olivos_9.jpg
 foto_portada: olivos_.jpg
+sku: GR 740

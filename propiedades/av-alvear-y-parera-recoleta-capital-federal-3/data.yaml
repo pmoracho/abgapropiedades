@@ -1,0 +1,91 @@
+id: av-alvear-y-parera-recoleta-capital-federal-3
+titulo: Av. Alvear y Parera, Recoleta, Capital Federal
+titulo_en: ''
+operacion: venta
+tipo: departamento
+destacada: false
+estado: activa
+expensas: 1000000
+expensas_moneda: ARS
+barrio: Recoleta
+partido: Capital Federal
+direccion: Av. Alvear y Parera, Recoleta, Capital Federal
+lat: -34.5904438
+lng: -58.3849203
+ambientes: 7
+dormitorios: 3
+banos: 4
+superficie_cubierta: 320
+superficie_total: 390
+cochera: true
+descripcion: UNICO, DISTINCIÓN Y CALIDAD a ESTRENAR con la MÁXIMA CALIDAD Y DISEÑO,
+  EXCELENTE TORRE de Mario Roberto Álvarez, única sobre Av. Alvear, con GRAN ENTRADA
+  IMPERIAL, Amplio PALLIER PRIVADO con Dos Ascensores codificados, Gran HALL DE ENTRADA,
+  GRAN LIVING a BALCÓN TERRAZA, COMEDOR formando L y ESCRITORIO y PLAYROOM; MASTER
+  SUITE con DOS AMPLIOS VESTIDORES y DOS BAÑOS en Mármol de Carrara a BALCÓN TERRAZA;
+  Biblioteca; Otra SUITE con BAÑO en Mármol de Carrara; TODOS LOS PISOS DE ROBLE DE
+  ESLAVONIA; COMEDOR DIARIO; COCINA con todo el equipamiento de última tecnología;
+  LAVADERO; DEPENDENCIA; dos BAULERAS; DOS COCHERAS FIJAS ó TRES. ESTRICTA VIGILANCIA
+  en todas los sectores. En la UBICACIÓN más CHIC de Buenos Aires, a pasos de Plaza
+  Carlos Pellegrini, Jockey Club, Plaza Cataluña, Plaza Francia, Plaza San Martín
+  de Tours; Parque Thays, Centro de Compras de primeras marcas, Hoteles de Primera
+  Línea, Salas de Cine y Teatro, con todos los medios de transportes cercano; Bares
+  y Restó de diversos gustos y estilos.
+descripcion_en: 'UNIQUE, DISTINCTIVE, AND BRAND-NEW, featuring the HIGHEST QUALITY AND DESIGN,
+  EXCELLENT TOWER by Mario Roberto Álvarez, the only one on Av. Alvear, with a GRAND
+  , Spacious PRIVATE LANDING with two code-protected elevators, Grand ENTRANCE HALL,
+  LARGE LIVING ROOM opening onto a BALCONY-TERRACE, L-SHAPED DINING ROOM, and OFFICE and PLAYROOM; MASTER
+  SUITE with TWO SPACIOUS WALK-IN CLOSETS and TWO BATHROOMS in Carrara marble opening onto a BALCONY-TERRACE;
+  Library; Another suite with a Carrara marble bathroom; ALL FLOORS IN
+  SLAVONIAN OAK; Daily dining room; Kitchen fully equipped with state-of-the-art appliances;
+  LAUNDRY ROOM; MAID’S QUARTERS; two STORAGE ROOMS; TWO OR THREE FIXED PARKING SPACES. STRICT SECURITY
+  in all areas. In the most CHIC LOCATION in Buenos Aires, just steps from Plaza
+  Carlos Pellegrini, the Jockey Club, Plaza Cataluña, Plaza Francia, Plaza San Martín
+  de Tours; Thays Park, a shopping center featuring top brands, first-class hotels,
+  movie theaters and theaters, with all modes of transportation nearby; bars
+  and restaurants catering to diverse tastes and styles.'
+caracteristicas_inmueble:
+- 'Dormitorio en Suite: 2'
+- Vestidor
+- 'Toilette'
+- Hall
+- Living
+- Comedor
+- Escritorio
+- Cocina
+- Comedor de Diario
+- Dependencia de Servicio
+- Lavadero
+- Terraza
+- 'Baulera: 2'
+caracteristicas_generales:
+- 'Cantidad de Ascensores: 2'
+- 'Tipo de Edificio: Torre'
+- 'Estado del Edificio: Excelente'
+- 'Estado del Inmueble: A estrenar'
+- 'Luminosidad: Muy luminoso'
+- 'Cobertura Cochera: sí'
+fotos:
+- 01_ALV-Y-PARERA_320_.jpg
+- 01_ALV-Y-PARERA_320_0.jpg
+- 01_ALV-Y-PARERA_320_1.jpg
+- 01_ALV-Y-PARERA_320_10.jpg
+- 01_ALV-Y-PARERA_320_11.jpg
+- 01_ALV-Y-PARERA_320_12.jpg
+- 01_ALV-Y-PARERA_320_13.jpg
+- 01_ALV-Y-PARERA_320_14.jpg
+- 01_ALV-Y-PARERA_320_15.jpg
+- 01_ALV-Y-PARERA_320_16.jpg
+- 01_ALV-Y-PARERA_320_17.jpg
+- 01_ALV-Y-PARERA_320_18.jpg
+- 01_ALV-Y-PARERA_320_19.jpg
+- 01_ALV-Y-PARERA_320_2.jpg
+- 01_ALV-Y-PARERA_320_3.jpg
+- 01_ALV-Y-PARERA_320_4.jpg
+- 01_ALV-Y-PARERA_320_5.jpg
+- 01_ALV-Y-PARERA_320_6.jpg
+- 01_ALV-Y-PARERA_320_7.jpg
+- 01_ALV-Y-PARERA_320_8.jpg
+- 01_ALV-Y-PARERA_320_9.jpg
+foto_portada: 01_ALV-Y-PARERA_320_0.jpg
+sku: AP -320

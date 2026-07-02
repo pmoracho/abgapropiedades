@@ -1,0 +1,87 @@
+id: montevideo-y-posadas-recoleta-capital-federal
+titulo: Montevideo y Posadas, Recoleta, Capital Federal
+titulo_en: ''
+operacion: venta
+tipo: departamento
+destacada: false
+estado: activa
+precio: 340000
+moneda: USD
+expensas: 410000
+expensas_moneda: ARS
+barrio: Recoleta
+partido: Capital Federal
+direccion: Montevideo y Posadas, Recoleta, Capital Federal
+lat: -34.5887895
+lng: -58.3849536
+ambientes: 3
+dormitorios: 2
+banos: 2
+superficie_cubierta: 87
+superficie_total: 92
+cochera: true
+descripcion: 'Excelente torre, Pallier Semiprivado Amplia RECEPCIÓN a BALCON, 2 DORMITORIOS, 2 BAÑOS, 
+    AMPLIA COCINA y LAVADERO a NUEVO, EDIFICIO rodeado de Jardines, con dos Ascensores Principales y 
+    Dos de Servicio, COCHERA FIJA entrada por rampa, VIGILANCIA  24hs. en excelente ubicación cerca 
+    del Parque Thays, de Avenidas importantes como Del Libertador, Av. Alvear, 9 de Julio, centros 
+    de compra de primera línea con Bares y Restó en el entorno, con salas de cine y teatro. En 
+    impecable estado refaccionado  y recién pintado.'  
+descripcion_en: 'Excellent apartment, semi-private landing, spacious living room opening onto a balcony, 
+    2 bedrooms, 2 bathrooms, spacious kitchen and brand-new laundry room, building surrounded by gardens, 
+    with two main elevators and two service elevators, dedicated parking space with ramp access, 
+    24-hour security. In an excellent location near Thays Park, major avenues such as Del Libertador, 
+    Av. Alvear, and 9 de Julio, top-tier shopping centers with bars  and restaurants in the vicinity, 
+    as well as movie theaters and a theater. In impeccable condition—renovated and freshly painted.'
+caracteristicas_inmueble:
+- Balcón
+- Lavadero
+- Baulera
+- 'Orientación: SO'
+- 'Disposición: Contrafrente'
+servicios_generales:
+- Aire Acondicionado
+- Calefacción
+- Vigilancia
+caracteristicas_generales:
+- 'Cantidad de Ascensores: 4'
+- 'Categoria del Edificio: Muy buena'
+- 'Tipo de Edificio: Torre'
+- 'Estado del Edificio: Muy bueno'
+- 'Luminosidad: Muy luminoso'
+- 'Cochera Cubierta'
+fotos:
+- MP_87_.jpg
+- MP_87_10.jpg
+- MP_87_11.jpg
+- MP_87_12.jpg
+- MP_87_13.jpg
+- MP_87_14.jpg
+- MP_87_15.jpg
+- MP_87_17.jpg
+- MP_87_18.jpg
+- MP_87_19.jpg
+- MP_87_2.jpg
+- MP_87_20.jpg
+- MP_87_21.jpg
+- MP_87_22.jpg
+- MP_87_23.jpg
+- MP_87_24.jpg
+- MP_87_25.jpg
+- MP_87_26.jpg
+- MP_87_27.jpg
+- MP_87_28.jpg
+- MP_87_29.jpg
+- MP_87_3.jpg
+- MP_87_30.jpg
+- MP_87_31.jpg
+- MP_87_32.jpg
+- MP_87_33.jpg
+- MP_87_4.jpg
+- MP_87_5.jpg
+- MP_87_6.jpg
+- MP_87_7.jpg
+- MP_87_8.jpg
+- MP_87_9.jpg
+- xxMONTEVIDEO-Y-POSADAS.jpg
+foto_portada: xxMONTEVIDEO-Y-POSADAS.jpg
+sku: MP-87
