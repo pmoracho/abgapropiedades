@@ -185,53 +185,87 @@ def extract_images(soup: BeautifulSoup, html: str, base_url: str) -> list[str]:
     return result
 
 
+def _title_es(text: str) -> str:
+    """Title-case en español: no capitaliza preposiciones/artículos cortos."""
+    NO_CAP = {"de", "del", "la", "las", "el", "los", "y", "o", "en", "a", "con"}
+    words = text.lower().split()
+    return " ".join(
+        w if (i > 0 and w in NO_CAP) else w.capitalize()
+        for i, w in enumerate(words)
+    )
+
+
 def extract_feature_sections(html: str) -> dict:
     """
-    Extrae TODAS las secciones de características de la página, sin
-    hardcodear nombres. ABGA estructura el detalle de cada propiedad como:
+    Extrae las 3 secciones de características de la página y las devuelve
+    como listas planas de strings. Los ítems con ":" mantienen el formato
+    "Clave: Valor" (title-case); los sin ":" se devuelven capitalizados.
 
-        <p><span style="color: #55afb4">TÍTULO DE SECCIÓN</span></p>
-        <ul>
-          <li>CLAVE: valor</li>   ← par clave:valor
-          <li>ITEM SIMPLE</li>    ← ítem sin valor (amenity/instalación)
-        </ul>
+    Mapeo de títulos de ABGA → claves del data.yaml:
+      CARACTERÍSTICAS INMUEBLE  → caracteristicas_inmueble
+      SERVICIOS GENERALES       → servicios_generales
+      CARACTERÍSTICAS GENERALES → caracteristicas_generales
 
-    Esto cubre "CARACTERÍSTICAS INMUEBLE", "SERVICIOS GENERALES",
-    "CARACTERÍSTICAS GENERALES", "INSTALACIONES", y cualquier otra
-    sección que ABGA agregue en el futuro con el mismo patrón.
-
-    Devuelve: { "titulo de la sección": {"pares": {...}, "items": [...]} }
+    Cualquier sección no reconocida se ignora (evita basura del scraper).
+    Devuelve: { "caracteristicas_inmueble": [...], "servicios_generales": [...], ... }
     """
-    sections = {}
+    # Mapeo de nombres de ABGA a claves YAML
+    TITULO_MAP = {
+        "CARACTERÍSTICAS INMUEBLE":  "caracteristicas_inmueble",
+        "CARACTERISTICAS INMUEBLE":  "caracteristicas_inmueble",
+        "SERVICIOS GENERALES":       "servicios_generales",
+        "CARACTERÍSTICAS GENERALES": "caracteristicas_generales",
+        "CARACTERISTICAS GENERALES": "caracteristicas_generales",
+    }
+
+    # Claves que ya están representadas en campos estructurados del data.yaml
+    # (precio, ambientes, dormitorios, etc.) — se omiten de la sección para
+    # evitar duplicarlos en el Resumen
+    CLAVES_OMITIR = {
+        "PRECIO", "EXPENSAS", "AMBIENTES", "DORMITORIOS",
+        "CANTIDAD DE DORMITORIOS", "BAÑOS", "BANOS",
+        "SUPERFICIE CUBIERTA", "SUPERFICIE TOTAL",
+        "ANTIGÜEDAD", "ANTIGÜEDAD", "COCHERA", "COCHERAS", "PISO",
+    }
+
+    result = {}
     pattern = re.compile(
         r'<span style="color:\s*#55afb4">([^<]+)</span></p>\s*<ul>(.*?)</ul>',
         re.S | re.I
     )
 
     for raw_title, ul_content in pattern.findall(html):
-        title = clean_text(raw_title)
-        li_items = re.findall(r"<li>(.*?)</li>", ul_content, re.S)
+        titulo = clean_text(raw_title).upper().strip()
+        clave_yaml = TITULO_MAP.get(titulo)
+        if not clave_yaml:
+            continue  # ignorar secciones no reconocidas
 
-        pares = {}
+        li_items = re.findall(r"<li>(.*?)</li>", ul_content, re.S)
         items = []
         for li in li_items:
-            text = clean_text(re.sub(r"<[^>]+>", "", li))
+            text = clean_text(re.sub(r"<[^>]+>", "", li)).strip()
             if not text:
                 continue
-            # "CLAVE: valor" → par; sin ":" → ítem simple (amenity)
+
+            # Detectar par "CLAVE: valor"
             m = re.match(r"^([A-ZÁÉÍÓÚÑÜ0-9 /._-]{2,40}):\s*(.+)$", text)
             if m:
-                clave = m.group(1).strip()
-                valor = m.group(2).strip()
-                # Normalizar "sí"/"no" para legibilidad
-                pares[clave] = valor
+                clave  = m.group(1).strip()
+                valor  = m.group(2).strip()
+                # Omitir claves ya cubiertas por campos estructurados
+                clave_norm = clave.upper().strip()
+                if clave_norm in CLAVES_OMITIR:
+                    continue
+                # Guardar como "Clave: Valor" (title-case en la clave)
+                items.append(f"{_title_es(clave)}: {valor}")
             else:
-                items.append(text)
+                # Ítem simple — capitalizar con _title_es
+                items.append(_title_es(text))
 
-        if pares or items:
-            sections[title] = {"pares": pares, "items": items}
+        if items:
+            result[clave_yaml] = items
 
-    return sections
+    return result
 
 
 def resolve_maps_shortlink(short_url: str) -> tuple:
@@ -281,7 +315,7 @@ def extract_property_data(soup: BeautifulSoup, html: str, url: str) -> dict:
     # URL canónica / slug
     data["_source_url"] = url
     slug_from_url = url.rstrip("/").split("/")[-1]
-    data["id"] = slug_from_url[:80]
+    data["id"] = slugify(slug_from_url)
 
     # Precio y moneda
     price_match = re.search(
@@ -430,6 +464,17 @@ def extract_property_data(soup: BeautifulSoup, html: str, url: str) -> dict:
         desc = re.split(r"(ENVIANOS|MANDANOS|Email|Teléfono)", desc)[0].strip()
         data["descripcion"] = desc
 
+    # 1. Campo WooCommerce (más confiable)
+    sku_tag = soup.find("span", class_="sku")
+    if sku_tag:
+        data["sku"] = clean_text(sku_tag.get_text())
+
+    # 2. Fallback: patrón en texto
+    if "sku" not in data:
+        m = re.search(r'\bSKU:\s*([A-Z0-9][A-Z0-9_-]{1,20})', raw, re.I)
+        if m:
+            data["sku"] = m.group(1).strip()
+
     return data
 
 
@@ -475,26 +520,18 @@ def build_yaml(prop: dict, fotos: list[str], prop_dir: str) -> dict:
         doc["descripcion"] = prop["descripcion"]
         doc["descripcion_en"] = ""   # completar manualmente
 
-    doc["comodidades"]    = []   # completar manualmente
-    doc["comodidades_en"] = []
-
-    # Secciones de características extraídas automáticamente
-    # (CARACTERÍSTICAS INMUEBLE, SERVICIOS GENERALES, INSTALACIONES, etc.)
+    # Secciones como listas planas (nueva estructura)
     secciones = prop.get("_secciones", {})
-    if secciones:
-        doc["secciones"] = {}
-        for titulo, contenido in secciones.items():
-            entrada = {}
-            if contenido["pares"]:
-                entrada["detalles"] = contenido["pares"]
-            if contenido["items"]:
-                entrada["items"] = contenido["items"]
-            if entrada:
-                doc["secciones"][titulo] = entrada
+    for clave in ("caracteristicas_inmueble", "servicios_generales", "caracteristicas_generales"):
+        if clave in secciones and secciones[clave]:
+            doc[clave] = secciones[clave]
 
     if foto_names:
         doc["fotos"]        = foto_names
         doc["foto_portada"] = foto_names[0]
+
+    if "sku" in prop:
+        doc["sku"] = prop["sku"]
 
     return doc
 

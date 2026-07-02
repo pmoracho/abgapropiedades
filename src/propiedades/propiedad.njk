@@ -147,15 +147,6 @@ eleventyComputed:
                  generados dinámicamente — no requieren tocar el template
                  cuando aparece una propiedad con campos distintos. Se
                  integran como filas más de la misma tabla, sin icono. -->
-            {% set extras = prop | resumenExtra %}
-            {% for item in extras %}
-            <div class="resumen-fila"
-              data-clave-es="{{ item.clave }}" data-clave-en="{{ item.clave_en }}"
-              data-valor-es="{{ item.valor }}" data-valor-en="{{ item.valor_en }}">
-              <dt>{{ item.clave }}</dt>
-              <dd>{{ item.valor }}</dd>
-            </div>
-            {% endfor %}
           </dl>
         </div>
 
@@ -167,13 +158,13 @@ eleventyComputed:
             data-desc-en="{{ prop.descripcion_en or prop.descripcion }}">{{ prop.descripcion }}</p>
         </div>
 
-        <!-- Comodidades -->
+        <!-- Comodidades (compatibilidad con YAMLs viejos que aún la tengan) -->
         {% if prop.comodidades and prop.comodidades.length %}
-        <div class="ficha-comodidades">
+        <div class="ficha-seccion">
           <h2 data-i18n="ficha_comodidades">Comodidades</h2>
-          <ul class="comodidades-lista" id="comodidades-lista"
-            data-comodidades-es="{{ prop.comodidades | dump }}"
-            data-comodidades-en="{{ prop.comodidades_en | dump }}">
+          <ul class="seccion-tags"
+            data-items-es="{{ prop.comodidades | dump }}"
+            data-items-en="{{ prop.comodidades_en | dump }}">
             {% for item in prop.comodidades %}
             <li>{{ item }}</li>
             {% endfor %}
@@ -181,35 +172,47 @@ eleventyComputed:
         </div>
         {% endif %}
 
-        <!-- Secciones de características (extraídas automáticamente del scraper,
-             o agregadas a mano: CARACTERÍSTICAS INMUEBLE, SERVICIOS GENERALES, etc.) -->
-        {% if prop.secciones %}
-        {% for titulo, contenido in prop.secciones %}
-        {% if titulo != "CARACTERÍSTICAS INMUEBLE" and titulo != "CARACTERISTICAS INMUEBLE" %}
+        <!-- Características del Inmueble -->
+        {% set items_ci = prop.caracteristicas_inmueble | sinDuplicadosResumen %}
+        {% if items_ci and items_ci.length %}
         <div class="ficha-seccion">
-          <h2>{{ titulo }}</h2>
-
-          {% if contenido.detalles %}
-          <dl class="seccion-detalles">
-            {% for clave, valor in contenido.detalles %}
-            <div class="detalle-item">
-              <dt>{{ clave | title }}</dt>
-              <dd>{{ valor }}</dd>
-            </div>
-            {% endfor %}
-          </dl>
-          {% endif %}
-
-          {% if contenido.items and contenido.items.length %}
-          <ul class="seccion-items">
-            {% for item in contenido.items %}
+          <h2 data-i18n="sec_caract_inmueble">Características del Inmueble</h2>
+          <ul class="seccion-tags"
+            data-items-es="{{ items_ci | dump }}"
+            data-items-en="{{ items_ci | traducirSeccion('en') | dump }}">
+            {% for item in items_ci %}
             <li>{{ item }}</li>
             {% endfor %}
           </ul>
-          {% endif %}
         </div>
         {% endif %}
-        {% endfor %}
+
+        <!-- Servicios Generales -->
+        {% if prop.servicios_generales and prop.servicios_generales.length %}
+        <div class="ficha-seccion">
+          <h2 data-i18n="sec_servicios">Servicios Generales</h2>
+          <ul class="seccion-tags"
+            data-items-es="{{ prop.servicios_generales | dump }}"
+            data-items-en="{{ prop.servicios_generales | traducirSeccion('en') | dump }}">
+            {% for item in prop.servicios_generales %}
+            <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+
+        <!-- Características Generales -->
+        {% if prop.caracteristicas_generales and prop.caracteristicas_generales.length %}
+        <div class="ficha-seccion">
+          <h2 data-i18n="sec_caract_generales">Características Generales</h2>
+          <ul class="seccion-tags"
+            data-items-es="{{ prop.caracteristicas_generales | dump }}"
+            data-items-en="{{ prop.caracteristicas_generales | traducirSeccion('en') | dump }}">
+            {% for item in prop.caracteristicas_generales %}
+            <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </div>
         {% endif %}
 
         <!-- Google Maps -->

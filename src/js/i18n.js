@@ -70,6 +70,7 @@
 
     // Detalles extra del Resumen (clave/valor del scraper sin campo
     // estructurado propio): data-clave-es/en + data-valor-es/en
+    // Filas extra del Resumen (data-clave-es/en + data-valor-es/en) — legado
     document.querySelectorAll(".resumen-fila[data-clave-es]").forEach((el) => {
       const dt = el.querySelector("dt");
       const dd = el.querySelector("dd");
@@ -91,11 +92,14 @@
       if (val) el.textContent = val;
     });
 
-    // Comodidades con data-comodidades-es / data-comodidades-en
-    document.querySelectorAll("[data-comodidades-es]").forEach((ul) => {      try {
-        const list = JSON.parse(
-          lang === "en" ? ul.dataset.comodidadesEn : ul.dataset.comodidadesEs
-        );
+    // Secciones de tags (caracteristicas_inmueble, servicios_generales,
+    // caracteristicas_generales y comodidades) — data-items-es / data-items-en
+    // Cada <ul class="seccion-tags"> lleva los arrays ES/EN precomputados
+    // por Eleventy como JSON embebido en atributos data-*.
+    document.querySelectorAll(".seccion-tags[data-items-es]").forEach((ul) => {
+      try {
+        const raw = lang === "en" ? ul.dataset.itemsEn : ul.dataset.itemsEs;
+        const list = JSON.parse(raw);
         if (Array.isArray(list)) {
           ul.innerHTML = list.map((item) => `<li>${item}</li>`).join("");
         }

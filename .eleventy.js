@@ -51,97 +51,132 @@ module.exports = function (eleventyConfig) {
     return (labels[lang] || labels.es)[tipo] || tipo;
   });
 
-  // ---- Resumen dinámico de la ficha de propiedad ----
+  // ================================================================
+  // TRADUCCIONES DE SECCIONES
+  // ================================================================
   //
-  // Combina campos estructurados (prop.precio, prop.ambientes, etc.) con
-  // cualquier dato extra que venga en secciones["CARACTERÍSTICAS INMUEBLE"]
-  // del scraper, SIN duplicar lo que ya está cubierto por un campo
-  // estructurado. Las claves del scraper vienen en mayúsculas con acentos
-  // (p.ej. "ORIENTACIÓN", "DEPENDENCIA DE SERVICIO") — se normalizan para
-  // poder filtrarlas contra el set de claves ya cubiertas.
+  // Diccionario central para traducir los ítems de las 3 secciones.
+  // Formato de cada entrada: "texto en español" → "text in english"
+  //
+  // Los ítems son strings del tipo "Clave: Valor" o "Chip simple".
+  // La traducción busca primero el string completo; si no lo encuentra,
+  // busca solo la parte de la clave (antes del ":"), y traduce
+  // la parte del valor por separado.
+  //
+  // Para agregar una traducción nueva: agregar una línea al diccionario.
+  // Si un ítem no tiene traducción, se muestra en español — sin romper nada.
 
-  function normalizeKey(str) {
-    return str
-      .toUpperCase()
-      .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // quitar acentos
-      .trim();
-  }
+  const TRADUCCIONES_SECCION = {
+    // ---- Características del Inmueble — claves ----
+    "Aire Acondicionado":          "Air conditioning",
+    "Alarma":                      "Alarm system",
+    "Balcón":                      "Balcony",
+    "Baulera":                     "Storage room",
+    "Calefacción":                 "Heating",
+    "Cocina":                      "Kitchen",
+    "Comedor":                     "Dining room",
+    "Comedor de Diario":           "Breakfast room",
+    "Dependencia de Servicio":     "Staff quarters",
+    "Disposición":                 "Position",
+    "Dormitorio en Suite":         "En-suite bedroom",
+    "Escritorio":                  "Study",
+    "Gas Natural":                 "Natural gas",
+    "Gimnasio":                    "Gym",
+    "Hall":                        "Entrance hall",
+    "Internet":                    "Internet",
+    "Lavadero":                    "Laundry room",
+    "Living":                      "Living room",
+    "Living Comedor":              "Living/dining room",
+    "Luminosidad":                 "Natural light",
+    "Master Suite":                "Master suite",
+    "Orientación":                 "Orientation",
+    "Portones Automaticos":        "Automatic gates",
+    "Seguridad Perimetral":        "Perimeter security",
+    "Teléfono":                    "Telephone",
+    "Terraza":                     "Terrace",
+    "Toilette":                    "Powder room",
+    "Vestidor":                    "Walk-in closet",
+    "Video Cable":                 "Cable TV",
+    "Vigilancia":                  "Security",
+    "Vigilancia/Encargado":        "Security/Concierge",
+    // ---- Características Generales — claves ----
+    "Cantidad de Ascensores":      "Elevators",
+    "Categoria del Edificio":      "Building category",
+    "Estado del Edificio":         "Building condition",
+    "Estado del Inmueble":         "Property condition",
+    "Tipo de Edificio":            "Building type",
+    // ---- Valores comunes ----
+    "sí":                          "Yes",
+    "Sí":                          "Yes",
+    "no":                          "No",
+    "No":                          "No",
+    "Excelente":                   "Excellent",
+    "Muy luminoso":                "Very bright",
+    "Muy luminosa":                "Very bright",
+    "Primera categoría":           "First class",
+    "Torre":                       "Tower",
+    "Frente":                      "Front facing",
+    "Contrafrente":                "Rear facing",
+    "Lateral":                     "Side facing",
+    "Amplio Living":               "Spacious living room",
+    "Living Intimo":               "Intimate living room",
+    "Altillo":                     "Loft",
+    "Pileta Climatizada":          "Heated pool",
+    "Pileta":                      "Pool",
+    "Parrilla":                    "Barbecue",
+    "Vestuarios":                  "Changing rooms",
+    "Terraza Amplia":              "Large terrace",
+    "Estado del Inmueble: A estrenar": "Property condition: Brand new",
+  };
 
-  // Claves del scraper que ya están representadas por un campo estructurado
-  // (precio, expensas, ambientes, dormitorios, baños, m² cubiertos/totales,
-  // antigüedad). Si el scraper trae alguna de estas, se descarta para no
-  // duplicar el dato en el Resumen.
-  const CLAVES_CUBIERTAS = new Set([
-    "PRECIO", "EXPENSAS",
-    "AMBIENTES",
-    "DORMITORIOS", "CANTIDAD DE DORMITORIOS",
-    "BANOS", "BAÑOS",
-    "SUPERFICIE CUBIERTA", "SUPERFICIE TOTAL",
-    "ANTIGUEDAD", "ANTIGÜEDAD",
-    "COCHERA", "COCHERAS",
-    "PISO",
+  // Filtra las claves que el Resumen ya muestra como campos estructurados
+  // (se omiten de caracteristicas_inmueble para no duplicarlas)
+  const CLAVES_OMITIR_RESUMEN = new Set([
+    "precio", "expensas", "ambientes", "dormitorios",
+    "cantidad de dormitorios", "baños", "banos",
+    "superficie cubierta", "superficie total",
+    "antigüedad", "antiguedad", "cochera", "cocheras", "piso",
   ]);
 
-  // Traducciones EN para claves del scraper que no tienen campo estructurado
-  // propio. Si una clave nueva aparece y no está acá, se muestra tal cual
-  // viene (en español) — agregar la traducción aquí cuando se detecte.
-  const TRADUCCION_CLAVE_EN = {
-    "ORIENTACIÓN": "Orientation",
-    "DISPOSICIÓN": "Position",
-    "LUMINOSIDAD": "Natural light",
-    "MASTER SUITE": "Master suite",
-    "VESTIDOR": "Walk-in closet",
-    "HALL": "Entrance hall",
-    "LIVING COMEDOR": "Living/dining room",
-    "ESCRITORIO": "Study",
-    "TOILETTE": "Powder room",
-    "COCINA": "Kitchen",
-    "COMEDOR DE DIARIO": "Breakfast room",
-    "DEPENDENCIA DE SERVICIO": "Staff quarters",
-    "LAVADERO": "Laundry room",
-    "DORMITORIO EN SUITE": "En-suite bedroom",
-    "CATEGORIA DEL EDIFICIO": "Building category",
-    "TIPO DE EDIFICIO": "Building type",
-    "ESTADO DEL EDIFICIO": "Building condition",
-  };
+  /**
+   * Traduce un array de ítems de sección al idioma indicado.
+   * Cada ítem puede ser "Clave: Valor" o "Chip simple".
+   * Si no hay traducción, devuelve el string original.
+   */
+  eleventyConfig.addFilter("traducirSeccion", (items, lang) => {
+    if (!items || !Array.isArray(items)) return [];
+    if (lang !== "en") return items;
 
-  const TRADUCCION_VALOR_EN = {
-    "sí": "Yes", "si": "Yes", "no": "No",
-    "frente": "Front", "contrafrente": "Back", "lateral": "Side",
-    "excelente": "Excellent", "muy luminosa": "Very bright",
-    "muy luminoso": "Very bright", "primera categoría": "First class",
-  };
+    return items.map(item => {
+      // Traducción directa del string completo
+      if (TRADUCCIONES_SECCION[item]) return TRADUCCIONES_SECCION[item];
 
-function toTitleCase(str) {
-    // Nota: \b en JS no reconoce bien los límites alrededor de vocales
-    // acentuadas (ej. "ORIENTACIÓN" → "OrientacióN" con \b\w). Separamos
-    // por espacios y capitalizamos cada palabra completa en su lugar.
-    return str
-      .toLowerCase()
-      .split(" ")
-      .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-      .join(" ");
-  }
+      // Para ítems "Clave: Valor", traducir clave y valor por separado
+      const colonIdx = item.indexOf(":");
+      if (colonIdx > -1) {
+        const clave = item.slice(0, colonIdx).trim();
+        const valor = item.slice(colonIdx + 1).trim();
+        const claveEN = TRADUCCIONES_SECCION[clave] || clave;
+        const valorEN = TRADUCCIONES_SECCION[valor] || valor;
+        return `${claveEN}: ${valorEN}`;
+      }
 
-  eleventyConfig.addFilter("resumenExtra", (prop) => {
-    const secciones = prop.secciones || {};
-    // Buscar la sección de características del inmueble por nombre conocido
-    const caract = secciones["CARACTERÍSTICAS INMUEBLE"] || secciones["CARACTERISTICAS INMUEBLE"];
-    if (!caract || !caract.detalles) return [];
+      return item; // sin traducción conocida → devolver en español
+    });
+  });
 
-    const cubiertas = new Set([...CLAVES_CUBIERTAS]);
-    const extra = [];
-    for (const [claveOriginal, valor] of Object.entries(caract.detalles)) {
-      const normalizada = normalizeKey(claveOriginal);
-      if (cubiertas.has(normalizada)) continue;
-      extra.push({
-        clave: toTitleCase(claveOriginal),
-        clave_en: TRADUCCION_CLAVE_EN[claveOriginal] || toTitleCase(claveOriginal),
-        valor: valor,
-        valor_en: TRADUCCION_VALOR_EN[String(valor).toLowerCase()] || valor,
-      });
-    }
-    return extra;
+  /**
+   * Filtra de caracteristicas_inmueble los ítems cuya clave
+   * ya está representada en el Resumen (ambientes, dormitorios, etc.)
+   */
+  eleventyConfig.addFilter("sinDuplicadosResumen", (items) => {
+    if (!items || !Array.isArray(items)) return [];
+    return items.filter(item => {
+      const colonIdx = item.indexOf(":");
+      if (colonIdx === -1) return true; // chip simple → siempre incluir
+      const clave = item.slice(0, colonIdx).trim().toLowerCase();
+      return !CLAVES_OMITIR_RESUMEN.has(clave);
+    });
   });
 
   return {

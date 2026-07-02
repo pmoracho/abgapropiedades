@@ -345,16 +345,18 @@ h3 { font-size: 1.2rem; }
   text-align: right; white-space: nowrap;
 }
 
-.ficha-descripcion, .ficha-comodidades { margin-bottom: 1.75rem; }
-.ficha-descripcion h2, .ficha-comodidades h2 { margin-bottom: 0.75rem; font-size: 1.15rem; }
+.ficha-descripcion { margin-bottom: 1.75rem; }
+.ficha-descripcion h2 { margin-bottom: 0.75rem; font-size: 1.15rem; }
 .ficha-descripcion p { color: #444; line-height: 1.7; white-space: pre-line; }
 
-.comodidades-lista {
+/* Tags unificados para las 3 secciones + comodidades (legado) */
+.seccion-tags, .comodidades-lista {
   list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem;
 }
-.comodidades-lista li {
+.seccion-tags li, .comodidades-lista li {
   background: #f1f0ed; padding: 0.4rem 0.8rem;
   border-radius: 20px; font-size: 0.85rem; color: #444;
+  white-space: nowrap;
 }
 
 /* Aside contacto */
@@ -559,15 +561,6 @@ h3 { font-size: 1.2rem; }
   text-align: right;
 }
 
-.seccion-items {
-  list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; font-size: 0.9em;
-  margin-top: 30px;
-}
-.seccion-items li {
-  background: #f1f0ed; padding: 0.4rem 0.8rem;
-  border-radius: 20px; font-size: 0.85rem; color: #444;
-}
-
 /* ---- MAPA PENDIENTE (cuando no hay lat/lng resueltas) ---- */
 .mapa-pendiente {
   border: 1.5px dashed #d1cec8;
@@ -694,7 +687,7 @@ h3 { font-size: 1.2rem; }
   .ficha-descripcion {
     page-break-inside: avoid;
   }
-  .seccion-items li,
+  .seccion-tags li,
   .comodidades-lista li {
     background: #fff !important;
     border: 1px solid #ccc !important;
